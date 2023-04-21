@@ -4,16 +4,16 @@ SEEDS=(
 )
 
 ATCK_NTRACES=(
-    #16384
-    16777216 # 2**24
+    16384
+    #16777216 # 2**24
 )
 
-GLOBAL_PREFIX=ctfds-final-test-10M-AKSB-center-vk0-fk0-2p24-LAST
+GLOBAL_PREFIX=test-run-attack
 PROF_DATASET=(
-    /common/dataset-artix7-aeshpc-2p24/A7_d2/vk0/manifest.json
+    /common/aes_hpc_dataset_v1/public/A7_d2/vk0/manifest.json
 )
 
-ATCK_DATASET=/common/dataset-artix7-aeshpc-2p24/A7_d2/fk0/manifest.json
+ATCK_DATASET=/common/aes_hpc_dataset_v1/public/A7_d2/fk0
 
 
 # Perform the model as well as the attack for all seeds
@@ -47,7 +47,7 @@ do
         # Case result
         ACASE_RES=kg_$natck
         python3 quick_eval.py attack \
-            --attack-dataset $ATCK_DATASET \
+            --attack-dataset $ATCK_DATASET/manifest_split.json \
             --n-attack-traces $natck \
             --attack-case A7_d2 \
             --load-profile $CASE_DIR \
@@ -55,9 +55,9 @@ do
             --max-chunk-size 16384
 
         # Eval
-        python3 devel_eval.py \
-            --keyguess $CASE_DIR/$ACASE_RES \
-            --fk-dataset $ATCK_DATASET \
-            --bytes-rank 16
+        python3 quick_eval.py eval \
+            --load-guess $CASE_DIR/$ACASE_RES \
+            --attack-dataset $ATCK_DATASET/manifest_split.json \
+            --attack-case A7_d2
     done
 done

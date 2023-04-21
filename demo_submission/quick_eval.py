@@ -127,8 +127,8 @@ def main():
                 msgpack.dump(kg.serialize(), f)
     if 'eval' in args.actions:
         if 'attack' not in args.actions:
-            kg = load_kg(args.load_guess)
-        ub = eval_attack(kg, args.attack_dataset)
+            kg = eval_utils.load_kg(args.load_guess)
+        ub = eval_utils.eval_attack(kg, args.attack_dataset)
         print('log2 rank', np.log2(ub))
         print('success', ub < eval_utils.MAX_SUCCESS_RANK)
 

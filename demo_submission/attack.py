@@ -25,8 +25,8 @@ from concurrent.futures import ThreadPoolExecutor
 MAX_CHUNK_SIZE=int(2**14)
 NT_PROF_SNR=16384
 NT_PROF_LDA=16384
-NT_PROF_SNR=None
-NT_PROF_LDA=None
+#NT_PROF_SNR=None
+#NT_PROF_LDA=None
 centered = True
 
 class Attack:
