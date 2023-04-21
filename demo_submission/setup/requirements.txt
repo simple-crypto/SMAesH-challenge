@@ -1,0 +1,17 @@
+aeshpc_new_32bit_d2_lib-0.1-cp310-cp310-linux_x86_64.whl
+contourpy==1.0.7
+cycler==0.11.0
+fonttools==4.39.3
+kiwisolver==1.4.4
+matplotlib==3.7.1
+msgpack==1.0.5
+msgpack-numpy==0.4.8
+numpy==1.24.2
+packaging==23.1
+Pillow==9.5.0
+py-cpuinfo==9.0.0
+pyparsing==3.0.9
+python-dateutil==2.8.2
+scalib-0.5.4.dev15+g3c6b78e-cp38-abi3-linux_x86_64.whl
+six==1.16.0
+tqdm==4.65.0
