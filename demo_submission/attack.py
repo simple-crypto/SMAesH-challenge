@@ -13,7 +13,7 @@ from tap_config import TAP_CONFIG, TapConfig, TapSignal
 import scalib.metrics
 import scalib.modeling
 import scalib.attacks
-import aeshpc_new_32bit_d2_lib as plib
+import aeshpc_32bit_d2_lib as plib
 import tqdm
 
 import matplotlib.pyplot as plt

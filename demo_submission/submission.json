@@ -7,7 +7,7 @@
     "license": "GPL-3.0-only",
     "attacks": {
         "A7_d2": {
-            "n_traces": 16777215
+            "n_traces": 16384
         }
     }
 }

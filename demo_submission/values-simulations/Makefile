@@ -7,7 +7,6 @@ AES_HPC_HDL_DIR = ./aes_enc128_32bits_hpc2
 VERILOG_TOP = ${AES_HPC_HDL_DIR}/aes_enc128_32bits_hpc2.v
 NSHARES=2
 
-
 VERILOG_PARAMS = d=$(NSHARES)
 VERILOG_SRC_DIRS = \
 	    ${AES_HPC_HDL_DIR} \
@@ -17,7 +16,9 @@ VERILOG_SRC_DIRS = \
 
 SIMU_FILE = simu_aeshpc_32bit.cpp
 
-all: verime
+REQU_FILE = ../setup/requirements.txt 
+
+all: verime upd-requirements
 
 verime:
 	verime \
@@ -28,6 +29,11 @@ verime:
 	    --build-dir $(PACKAGE_DIR) \
 	    --simu $(SIMU_FILE)
 	make -C $(PACKAGE_DIR)
+
+upd-requirements:
+	echo $(notdir $(shell find $(PACKAGE_DIR) -name '*.whl'))
+	sed -i '1 s/.*/\.\.\/values-simulations\/$(PACK_NAME)\/$(notdir $(shell find $(PACKAGE_DIR) -name '*.whl'))/' $(REQU_FILE)
+
 
 clean:
 	rm -rf $(PACKAGE_DIR)

@@ -84,13 +84,13 @@ def _clean_dir(path, re_create=False):
 class SubmissionTest:
     def __init__(self, args):
         self.only_list = args.only
-        self.workdir = Path(args.workdir)
-        self.dataset_dir = Path(args.dataset_dir)
+        self.workdir = Path(args.workdir).resolve()
+        self.dataset_dir = Path(args.dataset_dir).resolve()
         self.profile_dataset_root = self.dataset_dir
         if args.attack_dataset_dir is None:
             self.attack_dataset_dir = self.dataset_dir
         else:
-            self.attack_dataset_dir = Path(args.attack_dataset_dir)
+            self.attack_dataset_dir = Path(args.attack_dataset_dir).resolve()
         self.custom_attack_dataset_root = self.attack_dataset_dir
         if args.empty_workdir:
             _clean_dir(self.workdir)

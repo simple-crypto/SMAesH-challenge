@@ -2,7 +2,7 @@
 from dataclasses import dataclass
 from typing import List
 
-import aeshpc_new_32bit_d2_lib as pred
+import aeshpc_32bit_d2_lib as pred
 
 import numpy as np
 import math
