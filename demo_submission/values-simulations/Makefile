@@ -18,7 +18,7 @@ SIMU_FILE = simu_aeshpc_32bit.cpp
 
 REQU_FILE = ../setup/requirements.txt 
 
-all: verime upd-requirements
+all: verime upd-setup
 
 verime:
 	verime \
@@ -30,9 +30,11 @@ verime:
 	    --simu $(SIMU_FILE)
 	make -C $(PACKAGE_DIR)
 
-upd-requirements:
+upd-setup:
 	echo $(notdir $(shell find $(PACKAGE_DIR) -name '*.whl'))
-	sed -i '1 s/.*/\.\.\/values-simulations\/$(PACK_NAME)\/$(notdir $(shell find $(PACKAGE_DIR) -name '*.whl'))/' $(REQU_FILE)
+	sed -i '1 s/.*/$(notdir $(shell find $(PACKAGE_DIR) -name '*.whl'))/' $(REQU_FILE)
+	cp $(shell find $(PACKAGE_DIR) -name '*.whl') ../setup
+
 
 
 clean:
