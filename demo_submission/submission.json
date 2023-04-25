@@ -4,10 +4,10 @@
         { "name": "Charles Momin", "email": "charles.momin@uclouvain.be" }
     ],
     "name": "Demo Submission",
-    "license": "GPL-3.0-only",
+    "license": "open source license",
     "attacks": {
         "A7_d2": {
-            "n_traces": 16384
+            "n_traces": 16777215
         }
     }
 }
