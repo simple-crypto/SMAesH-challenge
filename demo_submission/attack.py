@@ -22,11 +22,15 @@ from multiprocessing import Pool
 
 from concurrent.futures import ThreadPoolExecutor
 
+# Maximum amount of a chunk. The dataset is read by 
+# small part depicted as 'chunks', and this parameter set 
+# the maximum size of each chunk. 
 MAX_CHUNK_SIZE=int(2**14)
-NT_PROF_SNR=16384
-NT_PROF_LDA=16384
+# Amount of traces used for the SNR computation (POIs identification) 
 NT_PROF_SNR=None
+# Amount of traces used for the creation of the templates.
 NT_PROF_LDA=None
+# Apply a centering process on each traces (in order to reduce any DC levels)
 centered = True
 
 class Attack:
