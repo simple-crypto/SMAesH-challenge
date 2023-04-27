@@ -53,12 +53,22 @@ Finally, the next Table summarizes the global size of each traces (in term of am
 
 ## Files organization and dataset reading
 
-The datasets are available for download at TODO. They are organised per
-target, according to the file tree represented below. In particular, only the datasets acquired
-for the Artix7 target are currently available under `aes_hpc_datasets/A7_d2/.` 
-Each target directory contains two sub-directories containing the
-training set `vk0` and the validation set `fk0`. The value of the fields for each datasets are organised 
-as file of \\( 2 ^ {24} \\) elements that are stored under dedicated subdirectories having the same name as the corresponding field.
+The dataset for the SMAesH challenge is available for download at TODO. it is
+composed of several datasets, which are grouped by target and by security order
+(denoted as a target isntance). For each target instance, we provide a training
+and a validation dataset (respectively `vk0` and `fk0`). Each dataset is
+described by a manifest file (denoted 'manifest.json') and is composed of
+several sub-directories (one per field stored in the dataset which is
+containing the fields data). The dataset are expected to be read with the tool
+provided in `dataset.py` specifically implemented for this purpose. The later
+provides top level functions that allows to load the data contained in a
+dataset per blocks of arbitrary size (see the definition of `iter_ntraces` in
+`dataset.py` and its usage in `demo_submission/attack.py` for more details).
+
+The architecture convention described above will be followed when the SMAesH
+dataset will be extended with new target cases. Currently, only the Artix7 case is available
+and the dataset organisation is depicted by the following tree
+
 ```
 aes_hpc_datasets/
 +-- A7_d2/
@@ -79,9 +89,3 @@ aes_hpc_datasets/
 | | +-- msk_key/
 | | +-- seed/
 ```
-
-Each dataset is described by a dedicated manifest `manifest.json` and is
-expected to be read with the dedicated utility implemented in `dataset.py`.
-Based on a manifest, the later provides top level functions that allows to read
-data contained in a dataset per blocks of arbitrary size (see the usage of `iter_ntraces` in `dataset.py` and
-`example_submission_package/attack.py` for more informations). 
