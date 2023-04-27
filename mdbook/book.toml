@@ -1,0 +1,10 @@
+[book]
+authors = ["Gaëtan Cassiers", "Charles Momin"]
+language = "en"
+multilingual = false
+src = "src"
+title = "AES-HPC Challenge"
+
+
+[output.html]
+mathjax-support = true
