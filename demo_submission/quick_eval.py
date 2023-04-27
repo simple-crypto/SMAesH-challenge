@@ -129,6 +129,7 @@ def main():
         if 'attack' not in args.actions:
             kg = eval_utils.load_kg(args.load_guess)
         ub = eval_utils.eval_attack(kg, args.attack_dataset)
+        ## If you apply modification (see Beyond Python section), the following print must remain.
         print('log2 rank', np.log2(ub))
         print('success', ub < eval_utils.MAX_SUCCESS_RANK)
 

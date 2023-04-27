@@ -12,6 +12,6 @@ Pillow==9.5.0
 py-cpuinfo==9.0.0
 pyparsing==3.0.9
 python-dateutil==2.8.2
-scalib-0.5.4.dev15+g3c6b78e-cp38-abi3-linux_x86_64.whl
+scalib>=0.5.4
 six==1.16.0
 tqdm==4.65.0

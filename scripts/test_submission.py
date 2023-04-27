@@ -266,7 +266,7 @@ class PythonSubmissionTest(SubmissionTest):
 
 DEF_TEMPLATE='''
 Bootstrap: docker
-From: ubuntu:22.04
+From: ubuntu:23.04
 %files
     {sub_dir}/setup /setup
 %post

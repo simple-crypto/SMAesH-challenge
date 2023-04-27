@@ -27,9 +27,9 @@ from concurrent.futures import ThreadPoolExecutor
 # the maximum size of each chunk. 
 MAX_CHUNK_SIZE=int(2**14)
 # Amount of traces used for the SNR computation (POIs identification) 
-NT_PROF_SNR=None
+NT_PROF_SNR=None # 16384
 # Amount of traces used for the creation of the templates.
-NT_PROF_LDA=None
+NT_PROF_LDA=None # 16384
 # Apply a centering process on each traces (in order to reduce any DC levels)
 centered = True
 
