@@ -57,5 +57,12 @@ are aggregated (i.e., summed) in order to reduce the dataset storing size. The
 practical reduction ratio equals 16, resulting in a practical sampling
 frequency of 312.5MHz with a vertical resolution of 14 bits.  
 
-TODO links to firmware for MCU, link to vivado project and
-bitstream, controller scripts). 
+The Vivado project used to generate the bitstream of the target FPGA is
+available on
+[github](https://github.com/simple-crypto/SMAesH-challenge/tree/main/fpga_designs/A7).
+The acquisition setup relies on a tweaked version of the chipwhisperer
+CW305 firmware. The latter is also available on
+[github](https://github.com/cmomin/chipwhisperer/tree/SMAesH-firmware).  In
+addition to adding genericity to the acquisition configuration, it has also
+been modified to be able to acquire multiple datasets while limiting the biases
+that can occur during long measurement campaigns.

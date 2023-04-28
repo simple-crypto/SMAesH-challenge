@@ -32,10 +32,17 @@ export SMAESH_FRAMEWORK=`pwd` # Set the MACRO
 ```
 
 ## Downloading datasets
-TODO
+
+An archive containing the whole dataset is [available](TODO) (~200Go, ~300Go
+uncompressed).  The latter has been compressed with the
+[Zstandard](http://facebook.github.io/zstd/) utility.  If only parts of the
+dataset are to be downloaded, it is possible to select the files to be
+downloaded via the
+[Nextcloud](https://nextcloud.cism.ucl.ac.be/s/Q2WdNjXzsEtXoDa?path=%2Fsmaesh-challenge)
+hosting service. 
 
 Next, we use the macro `SMAESH_DATASET` as the path to the directory where the
-downloaded dataset is stored. 
+downloaded dataset is stored (i.e., where the path of the directory `smaesh-dataset`). 
 
 ## Running our example attack: profiling, attack, evaluation
 
@@ -47,7 +54,7 @@ expected under the challenge evaluation procedure.
     cd $SMAESH_FRAMEWORK
     ```
 1. Then, setup a python virtual environement used for the evaluation, activate it
-and install the dependencies of the evaluation
+and install the dependencies required for the evaluation
     ```bash
     python3 -m venv venv-demo-eval # Create the venv
     source venv-demo-eval/bin/activate # Activate it (using bash shell)
@@ -78,14 +85,14 @@ and install the dependencies of the evaluation
     By default, the demo attack uses \\( 2 ^ {24} \\) traces for the profiling
     phase and \\( 2 ^ {24} -1 \\) for the attack, which may result in a significant
     amount of processing time depending on your machine configuration. Feel free to speed up the 
-    process (at the cost of weakening the attack) by reducing the amount of traces used by edition the submission as follows
+    process (at the cost of weakening the attack) by reducing the amount of traces used, which can be done by editing the submission as follows
     
     * Set the value of `NT_PROF_SNR` and `NT_PROF_LDA` in `$SMAESH_FRAMEWORK/demo_submission/attack.py` to a low value, e.g., 16384. 
     * Set the value of `n_traces` in `$SMAESH_FRAMEWORK/demo_submission/submission.json` to a low value, e.g., 16384. 
 
 
 For the demo attack, the evaluation phase is expected to 
-produces the following output on the standard output when the default configuration are used
+produce the following result on the standard output when the default configuration are used
 ```bash
 ...
 Amount of traces used in attack: 16777215
@@ -102,7 +109,7 @@ which means that
 * the evaluation results in 1 success taking into account the bound of \\( 2 ^ {68} \\) that should be reached to consider that an attack is successful (as detailled in [Challenge Rules](./rules.md)).
 
 Optionally, the framework offers the possibility to evaluate a submission in a
-container. In that case, the evaluation will be performed inside a
+isolated environment. In such that case, the evaluation will be performed inside a
 Apptainer/Singularity container with a limited access to physical ressources
 (as defined by the evaluation limits from [Challenge Rules](./rules.md)). This
 can be done by adding the flag `--apptainer` at the end of every commands shown
@@ -111,9 +118,8 @@ evaluation flow in a container (provided that Apptainer is installed)
 ```bash
 python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --apptainer
 ```
-**We strongly advise** to ensure that the container evaluation is working properly
-(the same evaluation results should be obtained): the practical evaluation of
-canditates' submissions will be evaluated using the same procedure. 
+**We strongly advise** to ensure that the containerized evaluation is behaving properly: 
+the practical evaluation of canditates' submissions will be evaluated following the same procedure. 
 
 ## Making a submission
 
@@ -121,16 +127,17 @@ Once your happy with your attack implementation, you can create a submission
 `.zip` file. Any submission is expected to contain a file `submission.json`
 file that is used to configure the latter (e.g., select target and claimed amount of traces, specify authors, ...).  
 
-For the example submission, the following command create the submission package `$SMAESH_FRAMEWORK/mysubmission.zip` for the 
+For the example submission, the following command creates the submission package `$SMAESH_FRAMEWORK/mysubmission.zip` for the 
 demo submission.  
 ```bash
 python3 scripts/build_submission.py --submission-dir demo_submission --package-file mysubmission.zip
 ```
 The latter can be uploaded on the submission server. 
 **We however strongly advise** to validate that the submission `.zip` file has been correctly
-generated. For this purpose, you can execute the evaluation phase directly on a submission `.zip`
-file (see [Submission](./submission.md) for more details). As an example, the following command performs the full
-evaluation inside a container for the file `mysubmission.zip`
+generated. For this purpose, you can execute the evaluation phase directly on
+the latter (see [Submission](./submission.md) for more details). As an example,
+the following command performs the full evaluation inside a container for the
+file `mysubmission.zip`
 ```
 python3 scripts/test_submission.py --package ./mysubmission.zip --workdir workdir-eval-zip --dataset-dir $SMAESH_DATASET --apptainer
 ```
