@@ -39,7 +39,7 @@ uncompressed).  The latter has been compressed with the
 dataset are to be downloaded, it is possible to select the files to be
 downloaded via the
 [Nextcloud](https://nextcloud.cism.ucl.ac.be/s/Q2WdNjXzsEtXoDa?path=%2Fsmaesh-challenge)
-hosting service. 
+hosting service (see [Datasets](./datasets.md) for more info). 
 
 Next, we use the macro `SMAESH_DATASET` as the path to the directory where the
 downloaded dataset is stored (i.e., where the path of the directory `smaesh-dataset`). 

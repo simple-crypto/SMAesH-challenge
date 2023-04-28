@@ -1,17 +1,16 @@
 # Framework
-The Section [Getting Started](./getting_started.md) explain in a minimal way
-what are the commands to use on order to run the demonstration attack provided.
+The Section [Getting Started](./getting_started.md) explains in a minimal way
+what are the commands to use in order to run the demonstration attack provided.
 By following these, you can ensure that all the dependencies are properly
-installed before starting to implementing your own. In this section, we try to
-explain with more details what are the steps to follow and what can be done in
-order to implement a new attack.
+installed before starting implementing your own. 
 
 To this purpose, we provide a comprehensive python-based framework to develop
-and evaluate attacks, available [on github](TODO). The following sections try
-to guide the reader through the implementation of a new submission. These are
-not exhaustive, however, and we invite you to refer to the documentation found
-directly in the code for more details.  Next, we assume that the attack is
-written in python, but the framework may also work with other languages (see
+and evaluate attacks, available [on github](https://github.com/simple-crypto/SMAesH-challenge). The following sections try
+to guide a candidate through the implementation of a new submission. However,
+not all the details are covered , and we invite the reader to refer to the
+documentation found directly in the code for further explanation.  Next, we assume
+that the attack is written in python, but the framework may also work with
+other languages (see
 [Beyond Python](not_python.md)).
 
 ## Contents
@@ -27,12 +26,15 @@ The framework is split in two parts:
 - The scripts for building a submission package and evaluating it.
 
 More particularly, the evaluation framework repository contains two
-directories: [demo_submission](TODO) and [scripts](TODO).  The files contained
-in `demo_submission` are all the files required to run the implemented attack.
-On the other hand, the files under `scripts` are scripts that are dedicated to
-the evaluation of submissions. These are not strictly necessary for the
-development of a new submission, but are rather provided to offer the possibility to verify that the latter is
-properly formed and configured to succeed the challenge verification process. 
+directories:
+[demo_submission](https://github.com/simple-crypto/SMAesH-challenge/tree/main/demo_submission)
+and
+[scripts](https://github.com/simple-crypto/SMAesH-challenge/tree/main/scripts).
+The files contained in `demo_submission` are all the files required to run the
+implemented attack.  On the other hand, the files under `scripts` are scripts
+that are dedicated to the evaluation of submissions. These are not strictly
+necessary for the development of a new submission, but are rather provided to
+offer the possibility to ensure that the latter is properly structured (and can pass the challenge evaluation).
 
 ## Dependencies
 
@@ -45,7 +47,7 @@ Additionally, the demonstration attack depends on
 * [Yosys](https://yosyshq.net/yosys/) (Yosys 0.25 (git sha1 e02b7f64b, gcc 9.4.0-1ubuntu1~20.04.1 -fPIC -Os) tested)
 * [Verilator](https://www.veripool.org/verilator/) (Verilator 5.006 2023-01-22 rev v5.006)
 * Python (Python 3.10.6 tested)
-* [Verime](https://github.com/simple-crypto/verime) (v1.0.0 tested)
+* [Verime](https://pypi.org/project/verime/) (v1.0.0 tested)
 * GNU Make (v4.2.1 Built for x86_64-pc-linux-gnu tested)
 * [Apptainer](https://apptainer.org/) (optional, see [Evaluation](./evaluation.md))
 
@@ -53,18 +55,18 @@ Additionally, the demonstration attack depends on
 
 The framework has been designed to limit a candidate's work to the
 implementation of two functions (one being optional, the other being mandatory)
-from a single file ([attack.py](TODO), see [Profiling](profiling.md) and
+from a single file ([attack.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/attack.py), see [Profiling](profiling.md) and
 [Attack](attack.md)). We provided tools dedicated to the reading of the dataset
-(see [dataset.py](TODO) for more info and [attack.py](TODO) for example usage).
-The [quick_eval.py](TODO) utility allows to execute the different sub-steps
+(see [dataset.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/dataset.py) for more info and [attack.py](TODO) for example usage).
+The [quick_eval.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/quick_eval.py) utility allows to execute the different sub-steps
 necessary to validate the attack implementation. in particular, it allows to
 execute the profiling, the attack itself and an evaluation of the latter. These
 steps can be perfomed independantly or in a combined fashion. 
 
 Next, we summarize the steps to follow in order to implement a new attack. We
-also show how [quick_eval.py](TODO) can be used to run the demonstration
+also show how `quick_eval.py` can be used to run the demonstration
 attack. We strongly encourage to develop your submission by tweaking this demo
-attack (i.e., by modifying the [attack.py](TODO) file), as it significantly
+attack (i.e., by modifying the `attack.py` file), as it significantly
 reduces the amount of work required to integrate your submission in our evaluation
 framework.
 
@@ -72,7 +74,7 @@ framework.
    dataset](getting_started.html#downloading-datasets)). We next assume that
    the macro `AESHPC_DATASET` holds the path to the directory storing
    downloaded dataset.
-1. Clone the [challenge repository](TODO). It is assumed next that the macro
+1. Clone the [challenge repository](https://github.com/simple-crypto/SMAesH-challenge). It is assumed next that the macro
    `AESHPC_FRAMEWORK` refers to the cloned repository.
 1. From the challenge repository, perform the following steps to develop your attack:
     1. Create a virtual environment for development purpose
@@ -110,6 +112,6 @@ framework.
         ```
 1. Start tweaking the demo into your own super effective attack! In practice,
    it can be done by simply modifying the function `attack()` (and optionally
-   `profile()`) in the file [attack.py](TODO)
+   `profile()`) in the file [attack.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/attack.py).
 1. Once your happy with your attack performance, see [Submission](submission.md) for packaging your submission.
 

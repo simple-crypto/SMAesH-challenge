@@ -19,7 +19,7 @@ dataset, and a fresh random plaintext for each trace.
 ## Dataset parameters
 
 The dataset contains the power measurements collected with the evalutation setups described in [Targets](./targets.md)
-together with some input data used for each execution of the AES-HPC core
+together with input data used at each execution of the core
 execution. In particular, the following fields can be found: 
 
 | Label | Type | Length | Description |
