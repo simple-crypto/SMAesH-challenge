@@ -7,24 +7,25 @@ To this end, the function `attack` must be implemented in [attack.py](TODO). The
 def attack(self, attack_dataset: DatasetReader) -> KeyGuess
 ```
 and takes as input a `DatasetReader` instance. In practice, the dataset reader
-provided points to a fixed key dataset for which only the power measurements
-and the value of the unmasked plaintext are provided (see
-[Datasets](./datasets.md)). The goal of this function is to recover the value
-of the 128-bit unmasked key used during the acquisition of the provided
-dataset. The function must return a `KeyGuess` instance that will be used to
-evaluate the performance of the attack. The later typically consists in a list
-of probabilities associated to parts of the unmasked key following a divide-and-conquer strategy (see
-[key_guess.py](TODO)). 
+points to a fixed key dataset that contains only the power traces and the unmasked plaintext (see
+[Datasets](./datasets.md)). The objective of this function is to recover the value
+of the 128-bit unmasked key used by the measured executions. The function **must return a `KeyGuess` instance** that will
+be used to evaluate the performance of the attack. The later typically consists
+in a list of probabilities associated to parts of the unmasked key, as commonly obtained when a
+divide-and-conquer strategy is implemented (see
+[key_guess.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/key_guess.py)). 
 
 In the demo submission, we use the SASCA implementation from
 [SCALib](https://scalib.readthedocs.io/en/stable/source/_generated/scalib.attacks.FactorGraph.html)
 to recover information about the 16 bytes of the key. The attack is not
-optimised and does not achieve good performances, but is rather used
-as a good starting point to ease the development of a new submission in the
-evaluation framework (see [attack.py](TODO)). When a preliminar profiling
-phase is required (as done in the demo submission), the computed/loaded profile
-is stored in the variable `self.profiled_model` (the assignement of
-this variable is handled by the framework script [quick_eval.py](TODO)). 
+optimised and does not achieve good performances, but is rather used as a good
+starting point to ease the development of a new submission in the evaluation
+framework (see
+[attack.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/attack.py)).
+When a preliminar profiling phase is used (as done in the demo submission),
+the computed/loaded profile is stored in the variable `self.profiled_model`
+(the assignement of this variable is handled by the framework script
+`quick_eval.py`). 
 
 The following command is used to start the attack
 ```

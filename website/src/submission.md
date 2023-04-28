@@ -3,15 +3,15 @@
 In this section, we explain how to properly package your submission before
 uploading it to the submession server of the challenge. For that, we consider
 that the attack implementation is finished and that you already verified that
-all the submission steps are working properly with [quick_eval.py](TODO) (see
+all the submission steps are working properly with [quick_eval.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/quick_eval.py) (see
 [Profiling](./profiling.md), [Attack](./attack.md) and
 [Evaluation](./evaluation.md)). 
 
-The utilitary [scripts/build_submission.py](TODO) allows to generate a valid submission `.zip` file. It works
+The utilitary [scripts/build_submission.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/quick_eval.py) allows to generate a valid submission `.zip` file. It works
 for all submission that has been developed in a single directory and that
 fullfill the submission requirements (see
 [Requirements](./submission.html#valid-submission-requirements)). As an
-example, the following command 
+example, the command 
 ```bash
 python3 scripts/build_submission.py --submission-dir demo_submission --package-file mysubmission.zip
 ```
@@ -24,7 +24,7 @@ submitting it to the server (see [Submission package validation](./submission.ht
 In order for the zip file produced by `build_submission.py` to be valid, the
 submission directory must meet the following criteria
 
-1. it **must** contain at its root the file`submission.json` (see [demo_submission/submission.json](TODO) for an
+1. it **must** contain at its root the file`submission.json` (see [demo_submission/submission.json](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/submission.json) for an
    example). In particular, it must contains the following attributes
     1. `authors`: the list of authors. Organised as a lsit of entries, where each entry specifies an author. In particular, each entry **must** contain the name of the author (under the `name` attribute) and a valid email address (under the `email` attribute).
     1. `name`: the name of the submission package. 
