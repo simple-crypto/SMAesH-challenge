@@ -24,16 +24,16 @@ dedicated sections for further informations.
 cd $SMAESH_FRAMEWORK
 
 # 1) Evaluate the submission directory
-python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $AESHPC_DATASET
+python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET
 
 # 2) Generate the package archive
 python3 scripts/build_submission.py --submission-dir demo_submission --package-file mysubmission.zip
 
 # 3) Evaluate the submission archive
-python3 scripts/test_submission.py --package ./mysubmission.zip  --workdir workdir-eval-zip --dataset-dir $AESHPC_DATASET
+python3 scripts/test_submission.py --package ./mysubmission.zip  --workdir workdir-eval-zip --dataset-dir $SMAESH_DATASET
 
 # 4) Evaluate the submission archive in a container
-python3 scripts/test_submission.py --package ./mysubmission.zip  --workdir workdir-eval-zip --dataset-dir $AESHPC_DATASET --apptainer
+python3 scripts/test_submission.py --package ./mysubmission.zip  --workdir workdir-eval-zip-container --dataset-dir $SMAESH_DATASET --apptainer
 ```
 
 
@@ -65,10 +65,10 @@ satisfy the following requirements
 
 ## Submission Evaluation
 As a sanity check, the framework provides a way to ensure that your submission
-run as expected in the challenge evaluation framework. The script
+runs as expected in the our evaluation framework. The script
 [test_submission.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/scripts/test_submission.py) 
 has been specially designed for this purpose. 
-It allows the complete evaluation of a submission to be carried out in the same way as it will be done on the server.
+It performs the full evaluation of a submission similarly to what will be done on the server.
 The latter can be done at two levels during development: directly on the submission directory or on the package archive. 
 The following commands show how to use [test_submission.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/scripts/test_submission.py) 
 to perform the evaluation of your submission
@@ -99,17 +99,17 @@ To this end, the command
     the developement process. The different steps of the evaluation can be run independently or in an combined manner by running one (or several) of the following commands
     ```bash
     ## Run all the phases of the submission evaluation (in order, profiling, attack, evaluation)
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $AESHPC_DATASET
+    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET
     
     ## Run the three phases independently
     # Profiling only 
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $AESHPC_DATASET --only profile
+    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only profile
     # Attack only
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $AESHPC_DATASET --only attack
+    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only attack
     # Evaluation only
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $AESHPC_DATASET --only eval
+    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only eval
     # You can also combine different steps, e.g., attack and evaluation
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $AESHPC_DATASET --only attack eval
+    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only attack eval
     ```
     The evaluation procedure starts by installing all the requirements specified in `demo_submission/setup/requirements.txt`. Then, the evaluation scripts act as a wrapper
     that execute command line calls to `demo_submission/quick_eval.py`.
@@ -120,7 +120,7 @@ that everything is functioning correctly inside the latter, `test_submission.py`
 framework provides an option to verify it. For the demo submission, you can use the flag
 --apptainer as shown next 
 ```bash 
-python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $AESHPC_DATASET --apptainer
+python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --apptainer
 ```
 Initially, a dedicated Singularity container will be created for the submission. The latter is configured to run on Ubuntu 23.04
 runtime. After the runtime setup is complete,
@@ -141,4 +141,4 @@ the package archive for the demo submission.
 ```bash
 python3 scripts/build_submission.py --submission-dir demo_submission --package-file mysubmission.zip
 ```
-It generates the submission `mysubmission.zip` file. That can then be uploaded on the [submission server](TODO). 
+It generates the submission `mysubmission.zip` file that can then be uploaded on the [submission server](TODO). 

@@ -33,8 +33,9 @@ export SMAESH_FRAMEWORK=`pwd` # Set the MACRO
 
 ## Downloading datasets
 
-An archive containing the whole dataset is [available](TODO) (~200Go, ~300Go
-uncompressed).  The latter has been compressed with the
+An archive containing the whole dataset is
+[available](https://uclouvain-my.sharepoint.com/:u:/g/personal/charles_momin_uclouvain_be/Ee1uKH4DOzFCsUfdng3_CQMBuffb0RTspY39hR2kTlfc9Q?e=5WmfKv)
+(~200Go, ~300Go uncompressed).  The latter has been compressed with the
 [Zstandard](http://facebook.github.io/zstd/) utility.  If only parts of the
 dataset are to be downloaded, it is possible to select the files to be
 downloaded via the
@@ -55,38 +56,42 @@ The following steps allow to run the demo attack and to evaluate it.
     ```bash
     python3 -m venv venv-demo-eval # Create the venv
     source venv-demo-eval/bin/activate # Activate it (using bash shell)
+    pip install pip --upgrade 
+    pip install verime # install Verime in the venv
     ```
 1. In the demo submission directory, build the simulation library with Verime
     ```bash
-    # First install Verime if required
-    pip install pip --upgrade
-    pip install verime # Install verime if required
-
     cd demo_submission
     make -C values-simulations 
     ```
-1. Install the python package required
+1. Install the python package required to run the attack
     ```bash
-    pip install -r setup/requirements.txt
+    (cd setup && pip install -r requirements.txt)
+    ```
+1. Format the dataset. This operation must be done a single time on each dataset (it may last a few seconds).
+    This will generate a new manifest per dataset (denoted `manifest_split.json`) that will be used by the framework's scripts.
+    ```bash
+    python3 split_dataset.py --dataset $SMAESH_DATASET/A7_d2/vk0/manifest.json 
+    python3 split_dataset.py --dataset $SMAESH_DATASET/A7_d2/fk0/manifest.json 
     ```
 1. Run the evaluation in itself 
     ```bash
     # Computes the profile
     # - uses the dataset vk0
     # - saves the profile in the current directory
-    python3 quick_eval.py profile --profile-dataset $AESHPC_DATASET/A7_d2/vk0/manifest.json --attack-case A7_d2 --save-profile .
+    python3 quick_eval.py profile --profile-dataset $SMAESH_DATASET/A7_d2/vk0/manifest_split.json --attack-case A7_d2 --save-profile .
     
     # Performs the attack using 16777215 traces 
     # - uses the dataset fk0
     # - loads the profile located into the current directory
     # - performs the attack using 524288 traces
     # - saves the keyguess resulting in the file './keyguess-file'
-    python3 quick_eval.py attack --attack-dataset $AESHPC_DATASET/A7_d2/fk0/manifest.json --attack-case A7_d2 --load-profile . --save-guess ./keyguess-file --n-attack-traces 16777216
+    python3 quick_eval.py attack --attack-dataset $SMAESH_DATASET/A7_d2/fk0/manifest_split.json --attack-case A7_d2 --load-profile . --save-guess ./keyguess-file --n-attack-traces 16777216
 
     # Evaluates the attack based on the result file produced
     # - loads the keyguess file generated with the attack
     # - use the key value of the dataset fk0 as a reference.
-    python3 quick_eval.py eval --load-guess ./keyguess-file --attack-case A7_d2 --attack-dataset $AESHPC_DATASET/A7_d2/fk0/manifest.json
+    python3 quick_eval.py eval --load-guess ./keyguess-file --attack-case A7_d2 --attack-dataset $SMAESH_DATASET/A7_d2/fk0/manifest_split.json
     ```
 For the demo attack, the evaluation phase is expected to 
 produce the following result on the standard output when the default configuration are used
