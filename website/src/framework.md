@@ -79,36 +79,34 @@ framework.
 1. From the challenge repository, perform the following steps to develop your attack:
     1. Create a virtual environment for development purpose
         ```bash
-        python3 -m venv demo_venv_devel
-        source demo_venv_devel/bin/activate # To activate with bash shell
+        python3 -m venv venv-demo-eval # Create the venv
+        source venv-demo-eval/bin/activate # Activate it (using bash shell)
         ```
         and don't forget to **activate it**.
-    2. Go in the demo attack directory
+    1. Go in the demo attack directory
         ```bash
         cd demo_submission
         ```
-    2. Install the required dependencies.
-        ```bash
-        pip install --upgrade pip
-        pip install -r requirements.txt
-        ```
-    3. Build the simulation library and install it (for more details, see [Target Simulation](target_simulation.md)):
+    1. Build the simulation library (for more details, see [Target Simulation](target_simulation.md)). Be sure to have Verime installed.
         ```bash
         make -C ./values-simulations 
-        pip install values-simulations/aeshpc_32bit_d2_lib/*.whl
         ```
-    4. Run the profiling phase (for more details, see [Profiling](profiling.md)):
+    1. Install the required dependencies.
         ```bash
-        mkdir workspace # Create the workspace
-        python3 quick_eval.py profile --profile-dataset $AESHPC_DATASET/A7_d2/vk0/manifest.json --attack-case A7_d2 --save-profile ./workspace
+        pip install --upgrade pip
+        pip install -r setup/requirements.txt
         ```
-    5. Run the attack phase (for more details, see [Attack](attack.md)):
+    1. Run the profiling phase (for more details, see [Profiling](profiling.md)):
         ```bash
-        python3 quick_eval.py attack --attack-dataset $AESHPC_DATASET/A7_d2/fk0/manifest --n-attack-traces 8388608 --attack-case A7_d2 --load-profile ./workspace --save-guess workspace/kg2p23_fk0
+        python3 quick_eval.py profile --profile-dataset $AESHPC_DATASET/A7_d2/vk0/manifest.json --attack-case A7_d2 --save-profile .
         ```
-    6. Evaluate the attack (for more details, see [Evaluation](evaluation.md)):
+    1. Run the attack phase (for more details, see [Attack](attack.md)):
         ```bash
-        python3 quick_eval.py eval --load-guess workspace/kg2p23_fk0 --attack-dataset $AESHPC_DATASET/A7_d2/fk0/manifest --attack-case A7_d2
+        python3 quick_eval.py attack --attack-dataset $AESHPC_DATASET/A7_d2/fk0/manifest.json --attack-case A7_d2 --load-profile . --save-guess ./keyguess-file --n-attack-traces 16777216
+        ```
+    1. Evaluate the attack (for more details, see [Evaluation](evaluation.md)):
+        ```bash
+        python3 quick_eval.py eval --load-guess ./keyguess-file --attack-case A7_d2 --attack-dataset $AESHPC_DATASET/A7_d2/fk0/manifest.json
         ```
 1. Start tweaking the demo into your own super effective attack! In practice,
    it can be done by simply modifying the function `attack()` (and optionally
