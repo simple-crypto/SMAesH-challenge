@@ -1,7 +1,7 @@
 # Welcome to the CHES2023 SMAesH Challenge
 
 The SMAesH challenge is a side-channel analysis contest on a masked FPGA
-implementation of AES.
+implementation of the AES.
 Using the public profiling dataset and the open-source hardware design, the
 goal is to mount a key-recovery attack using as few traces as possible.
 
@@ -39,23 +39,29 @@ is more to come!
 
 ## Attack ideas
 
-The organizers of the challenge and designers of the implementation did not
-perform advanced attacks on the implementations, but we share our ideas on
-potential attack strategies:
+The demo submission implements a textbook attack against the AES S-box output that should be 
+easy to improve. We next share a few ideas of alternative strategies that could be used for this purpose: 
 
-- Exploit more leakage points: the demo targets the shares of the S-box output,
-  but the following states leak more:
-    + masked states in the bitsliced S-box,
-    + output of MixColumns,
-    + key schedule.
-- Use better models than pooled Gaussian Templates.
-- Perform cross-dataset transfer learning: you know more on the Artix-7 than on
-  the Spartan-6.
+- Exploit more leakage points: the demo targets the shares of the S-box output
+  which lies in the combinatorial logic, but the masked states in the bitslice
+  S-box or the output of MixColumns leak more.
+- Profile larger target intermediate values: for example, the masked states in
+  the bitslice S-box are larger than 8-bit despite they only depend on 8 key
+  bits, and the output of MixColumns naturally depends on 32 key bits.
+- Perform multi-target and multivariate attacks: there are multiple leaking
+  operations in the implementations, which can be exploited with advanced
+  statistical attacks (e.g., analytical strategies or machine learning).
+- Try different profiling strategies: for low number of shares, directly
+  profiling with a machine learning model without taking advantage of the
+  shares' knowledge could be possible.
+- Perform cross-dataset transfer learning: we provide more profiling power for
+  the Artix-7 than for the Spartan-6.
+- Exploit the leakage of the key scheduling algorithm. 
 
 ## Timeline
 
-- **2023-05-xx** Challenge launch with Artix-7 target, submission server opens.
-- **2023-05-xx** Launch of the Spartan-6 target.
+- **May 2023** Challenge launch with Artix-7 target, submission server opens.
+- **June 2023** Launch of the Spartan-6 target.
 - **2023-09-10** (at CHES) Award ceremony.
 
 Submissions are graded continuously, and the [leaderboard](./leaderboard.md)
@@ -66,13 +72,13 @@ see the [rules](./rules.md) for more details.
 ## Contact information
 
 - Mailing list: official announcements and challenge discussions.
-- Matrix channel for chatting with other participants, build teams, etc.
+- [Matrix channel](https://matrix.to/#/#smaesh-challenge:matrix.org) for chatting with other participants, build teams, etc.
 - Directly contact the organizers for private matters: <info@simple-crypto.org>.
 
 ## Organizers
 
 This challenge is organized by the [SIMPLE-Crypto
-Association](https://www.simple-crypto.org), non-profit organization created in
+Association](https://www.simple-crypto.org), a non-profit organization created in
 order to develop open source cryptographic implementations and to maintain them
 over time, currently with a strong focus on embedded implementation with strong
 physical security guarantees.

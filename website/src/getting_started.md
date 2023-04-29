@@ -60,27 +60,18 @@ and install the dependencies required for the evaluation
     source venv-demo-eval/bin/activate # Activate it (using bash shell)
     # Install python packages
     pip install pip --upgrade
-    pip install scripts/requirements.txt
+    pip install -r scripts/requirements.txt
     ```
 1. Build the simulation library used by the demo attack with Verime
     ```bash
+    pip install verime # Install verime if required
     make -C demo_submission/values-simulations 
     ```
     For the demo submission, this command also updates the submission configuration (see [Submission](./submission.md) for more details).
-1. Run the evaluation in itself (with some level of granularity)
+1. Run the evaluation in itself 
     ```bash
     ## Run all the phases of the submission evaluation (in order, profiling, attack, evaluation)
     python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET
-    
-    ## Run the three phases independently
-    # Profiling only 
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only profile
-    # Attack only
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only attack
-    # Evaluation only
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only eval
-    # You can also combine different steps, e.g., attack and evaluation
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only attack eval
     ```
     By default, the demo attack uses \\( 2 ^ {24} \\) traces for the profiling
     phase and \\( 2 ^ {24} -1 \\) for the attack, which may result in a significant
