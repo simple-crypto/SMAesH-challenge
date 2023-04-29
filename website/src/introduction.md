@@ -27,7 +27,7 @@ contains the values of all the shares in the executions, while the one for the
 Spartan-6 (Sakura-G) contains only the unmasked values.
 
 **Attack success criterion**: rank of the key below \\(1
-\mathrm{BTCH}\cdot\mathrm{s}\\), defined as the **number of blocks hashed by
+\text{BTC-H}\cdot\mathrm{s}\\), defined as the **number of blocks hashed by
 the Bitcoin mining network in 1 second** (fixed to \\(2^{68}\\) for the
 duration of the challenge).
 
