@@ -91,7 +91,7 @@ More precisely, given the current challenger \\(A_c\\), everytime a new breakthr
     + \\(n_{c'}\\) is the claim of \\(A_{c'}\\),
     + \\(n_{c}\\) is the claim of \\(A_c\\).
 2. Each breakthrough attack \\(A\\) announced after \\(A_{c'}\\) was announced ("grace period" submissions) is awarded
-  \\(t \cdot \log_2(n_{c}/n_a)\\) points with \\(n_a)\\ the claim of \\(A\\).
+  \\(t \cdot \log_2(n_{c}/n_a)\\) points with \\(n_a\\) the claim of \\(A\\).
 3. The previous challenger is awarded \\(t \cdot \log_2(1/0.9)\\) points.
 
 Initially, before publication of a challenger, \\(n_{c'}\\) is the number of traces in
@@ -106,7 +106,7 @@ points are awarded to the current challenger following rule 3. above.
 - The points of a team for a target is the total of the points awarded to their
   attacks for that target.
 - Authentication of a team or individual is done with a secret token created on
-  the first submission. In case of loss, there are no recovery optioms.
+  the first submission. In case of loss, there are no recovery options.
 
 ## Prize
 
