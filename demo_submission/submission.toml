@@ -1,0 +1,23 @@
+### WARNING: The full submission, including this file, will be made public. ###
+
+# Name of the submission.
+# This name must change at every new submission you make.
+name = "Demo-1"
+# Team name, as registered on the submission server.
+team = "Organizers"
+# Author list (pseudonyms allowed).
+authors = [
+        { name = "Gaëtan Cassiers", email = "gaetan.cassiers@iaik.tugraz.at" },
+        { name = "Charles Momin", email = "charles.momin@uclouvain.be" },
+]
+# License for all the code in this submission (unless noted otherwise in
+# individual files or in a LICENSE, COPYRIGHT or COPYING.
+# If applicable, give the SPDX ID of the license (https://spdx.org/licenses/),
+# otherwise the full license text an unambiguous reference to the license.
+# In any case, the license must be an open-source license (https://opensource.org/osd/).
+# We recomment using the Apache-2.0 license or the  GPL-3.0-or-later license.
+license = "Apache-2.0"
+
+# Number of attack traces for each new attack contained in this submission.
+[attacks.A7_d2]
+n_traces = 16777215

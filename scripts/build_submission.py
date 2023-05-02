@@ -61,8 +61,8 @@ def create_zip(
 
 def main():
     args = parse_args()
-    if not (args.submission_dir / 'submission.json').exists():
-        print("ERROR: The submission directory does not contain a 'submission.json' file.", file=sys.stderr)
+    if not (args.submission_dir / 'submission.toml').exists():
+        print("ERROR: The submission directory does not contain a 'submission.toml' file.", file=sys.stderr)
         return
     create_zip(
         args.package_file,
