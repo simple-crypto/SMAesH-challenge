@@ -52,9 +52,10 @@ announced and take inspiration from other's attacks.
 
 Submissions can be submitted at any point in time, and will be evaluated at
 unspecified and irregular intervals (hopefully about weekly).
-If a team makes two submissions separated by less than 6 days, the first of
-these submissions will be discarded.
-The submissions are graded following the submission order, and are graded independently for each target.
+If a team makes a series of submissions separated by less than 6 days, only the
+last one is guaranteed to be evaluated: the other ones might not be evaluated
+(an already-evaluated attack is never discarded).
+The submissions are evaluated following the submission order, and are evaluated independently for each target.
 
 For each target, there is at any point in time a **challenger** attack, which is the best public attack.
 (Initially, the challenger is the demo attack or dataset size.)
