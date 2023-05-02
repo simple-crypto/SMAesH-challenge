@@ -9,6 +9,7 @@ import subprocess as sp
 import zipfile
 import venv
 import copy
+import tomli
 
 import numpy as np
 
@@ -119,8 +120,8 @@ class SubmissionTest:
         return submission_dir
 
     def parse_submission(self):
-        with open(self.submission_dir / 'submission.json', 'rb') as f:
-            self.description = json.load(f)
+        with open(self.submission_dir / 'submission.toml', 'rb') as f:
+            self.description = tomli.load(f)
 
     def profile_dir(self, target):
         return (self.workdir / 'profile' / target).resolve()
@@ -257,9 +258,9 @@ class PythonSubmissionTest(SubmissionTest):
             builder.create(venv_dir)
         self.venv_python = self.venv.env_exec_cmd
         if self.only('setup'):
-            self.run_python(['-m', 'pip', 'install', '--upgrade', 'pip'])
+            self.run_python(['-m', 'pip', 'install', '--upgrade', 'pip','--break-system-packages'])
             self.run_python(
-                    ['-m', 'pip', 'install', '-r', 'requirements.txt'],
+                    ['-m', 'pip', 'install', '-r', 'requirements.txt','--break-system-packages'],
                     cwd=self.submission_dir / 'setup'
                     )
 
