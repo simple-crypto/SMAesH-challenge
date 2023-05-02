@@ -5,7 +5,7 @@
 # have network access).
 # The setup/ directory of your submission is accessible as setup/
 apt-get -y update
-apt-get -y install python3-minimal python3-venv python3-pip
+apt-get -y install --no-install-recommends python3-minimal python3-venv python3-pip
 # Root package install is generally not recommended with pip, but here its fine
 # (single-purpose isolated container).
 cd /setup
