@@ -9,6 +9,7 @@ apt-get -y install python3-minimal python3-venv python3-pip
 # Root package install is generally not recommended with pip, but here its fine
 # (single-purpose isolated container).
 cd /setup
-pip install -r /setup/requirements.txt
+python3 -m pip install pip --upgrade --break-system-packages
+python3 -m pip install -r /setup/requirements.txt --break-system-packages
 # We can run arbitrary code here.
 
