@@ -3,7 +3,7 @@
 The targets for this challenge are all instantiations of
 [SMAesH](https://github.com/simple-crypto/SMAesH) on FPGAs.
 The latter is a 32-bits masked implementation of the [AES-128](https://csrc.nist.gov/publications/detail/fips/197/final) encryption algorithm.
-For the challenge, we instantiate it at the first order security (\\(d=2\\)).
+For the challenge, we first instantiate it at the first order security (\\(d=2\\)).
 For more details, see the [SMAesH documentation](https://www.simple-crypto.org/outputs).
 
 We have two FPGA targets: the [Chipwhisperer CW305](https://rtfm.newae.com/Targets/CW305%20Artix%20FPGA/) with an Artix-7 Xilinx

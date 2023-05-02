@@ -33,7 +33,7 @@ For each target covered by the submission, the attack will be run for
 the corresponding test dataset, using the provided evaluation framework
 restricted to the number of online traces claimed in the submission.
 The attack is succesfull if the upper-bound on the estimated rank is below
-\\(2^{64}\\).
+\\(2^{68}\\).
 
 The result of the evaluation is, for each target where the attack is
 successful, a break in \\(n\\) traces where \\(n\\) is the claim.
