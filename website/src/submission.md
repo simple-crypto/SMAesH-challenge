@@ -43,13 +43,13 @@ To be valid, a submission must be developed in a single directory. The
 structure of the latter is left to the choice of the applicants, but must
 satisfy the following requirements
 
-1. it **must** contain the file`submission.json` at the root (see [demo_submission/submission.json](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/submission.json) for an
-   example). The latter is a JSON file configuring the submission. It must contain the following attributes
-    1. `authors`: the list of authors. Organised as a list of entries, where each entry specifies an author. In particular, each entry **must** contain the name of the author (under the `name` attribute) and a valid email address (under the `email` attribute).
+1. it **must** contain the file`submission.json` at the root (see [demo_submission/submission.toml](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/submission.toml) for an
+   example). The latter is a [TOML](https://toml.io/en/) file configuring the submission. It must contain the following attributes
+    1. `authors`: the list of authors. Organised as a list of entries, where each entry is a dictionary specifying an author. In particular, each dictionary **must** contain the name of the author (under the `key` field) and a valid email address (under the `email` field).
     1. `name`: the name of the submission package. 
     1. `license`: the license applying to the submission. Note that only open-source license (permissive or not) will be accepted. 
-    1. `attacks`: the attack configuration claimed to be successful. Multiple targets can be configured (by putting multiple targets attributes) and each target **must** specifies a 
-    claimed amount of attack traces for which the submitted attack is supposed to work. 
+    1. `attacks`: the attack configuration claimed to be successful. Multiple targets can be configured and each target **must** specify a 
+    claimed amount of traces for which the submitted attack is supposed to work. 
 1. it **must** contain the file `setup/requirements.txt`. The latter **must**
    list all the python packages required (following the [pip file
    format](https://pip.pypa.io/en/stable/reference/requirements-file-format/))
