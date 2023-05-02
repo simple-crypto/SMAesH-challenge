@@ -51,7 +51,7 @@ announced and take inspiration from other's attacks.
 ### Attack acceptance 
 
 Submissions can be submitted at any point in time, and will be evaluated at
-unspecified and irregular intervals (hopefully about weekly).
+unspecified and irregular intervals (normally multiple times a week).
 If a team makes a series of submissions separated by less than 6 days, only the
 last one is guaranteed to be evaluated: the other ones might not be evaluated
 (an already-evaluated attack is never discarded).
