@@ -83,7 +83,7 @@ evaluation procedure
     python3 -m venv venv-demo-eval
     source venv-demo-eval/bin/activate # Activation with bash shell
     pip install pip --upgrade
-    pip install scripts/requirements.txt
+    pip install -r scripts/requirements.txt
     ```
 1. Ensure that the ressources required by your submission are generated (e.g., profile file, ...). The demo submission is using a verime library. The latter should thus be generated and must be enlisted in the file `demo_submission/setup/requirement.txt` for the evaluation to work. 
 To this end, the command

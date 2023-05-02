@@ -14,20 +14,24 @@ it).
 
 Additionally, the demonstration attack depends on
 * [Yosys](https://yosyshq.net/yosys/) (Yosys 0.25 (git sha1 e02b7f64b, gcc 9.4.0-1ubuntu1~20.04.1 -fPIC -Os) tested)
-* [Verilator](https://www.veripool.org/verilator/) (Verilator 5.006 2023-01-22 rev v5.006)
+* [Verilator](https://veripool.org/guide/latest/install.html#git-quick-install) (Verilator 5.006 2023-01-22 rev v5.006)
 * [Verime](https://pypi.org/project/verime/) (v1.0.0 tested)
 * GNU Make (v4.2.1 Built for x86_64-pc-linux-gnu tested)
 * [Apptainer](https://apptainer.org/) (optional, see [Running our example attack](./getting_started.html#running-our-example-attack-profiling-attack-evaluation))
+
+**CAUTION**: we highly recommand to install Verilator from the
+[git](https://github.com/verilator/verilator) and to run Verilator
+[in-place](https://veripool.org/guide/latest/install.html#run-in-place-from-verilator-root) (as recommended by the official documentation).
 
 ## Cloning repos
 
 Run the following commands to clone the challenge framework repository and set the macro. 
 We denote next as `SMAESH_FRAMEWORK` the directory resulting from the clone
-(i.e., the directory `DIR_CLONE/SMAESH-challenge`).
+(i.e., the directory `DIR_CLONE/SMAesH-challenge`).
 ```bash
-cd DIR_CLONE
 git clone git@github.com/simple-crypto/SMAesH-challenge.git # Using SSH 
 git clone https://github.com/simple-crypto/SMAesH-challenge.git # Using HTTPS
+cd SMAesH-challenge 
 export SMAESH_FRAMEWORK=`pwd` # Set the MACRO
 ```
 
@@ -113,4 +117,11 @@ functions in
 We advise to use the example submission as a basis for any new submission: a
 new attack can easily be developped by tweaking the appropriate function. Try it yourself! 
 
+If necessary, the other sections provide more detailed information on how to
+develop a submission. In particular: 
+
+* [Target](./targets.md) details the acquisition setup used for the different
+  targets. 
+* [Datasets](./datasets.md) details the architecture of the dataset.
+* [Framework](./framework.md) details how to use the framework of the challenge to develop, evaluate and package a new submission. 
 
