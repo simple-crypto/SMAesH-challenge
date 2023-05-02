@@ -10,6 +10,7 @@ import zipfile
 import venv
 import copy
 import tomli
+import sys
 
 import numpy as np
 
@@ -55,10 +56,20 @@ def parse_args():
             help="Perform the check inplace"
             )
     parser.add_argument(
+            '--json',
+            default=False,
+            action="store_true",
+            help="Output JSON evaluation results instead of plain text."
+            )
+    parser.add_argument(
             '--apptainer',
             default=False,
             action="store_true",
             help="Test in an apptainer container instead of a local python virtualenv.",
+            )
+    parser.add_argument(
+            '--target',
+            help='Run only for the given target.',
             )
     parser.add_argument(
             '--only',
@@ -246,7 +257,7 @@ class PythonSubmissionTest(SubmissionTest):
 
     def run_submission(self, cmd, step, ds_name, _target):
         cmd = ['quick_eval.py'] + cmd
-        print(cmd)
+        print(cmd, file=sys.stderr)
         return self.run_python(cmd)
 
     def run_setup(self):
@@ -348,7 +359,7 @@ class ApptainerSubmissionTest(SubmissionTest):
             '-c',
             f'cd {self.SUBMISSION_DIR}; python3 quick_eval.py {cmd_s}'
             ])
-        print(' '.join(map(str, app_cmd)))
+        print(' '.join(map(str, app_cmd)), file=sys.stderr)
         return sp.run(
                 app_cmd,
                 timeout=duration,
@@ -370,14 +381,23 @@ def main():
     args = parse_args()
     st = ApptainerSubmissionTest(args) if args.apptainer else PythonSubmissionTest(args)
     st.run_setup()
-    for target in st.description['attacks'].keys():
+    if args.target is None:
+        targets = list(st.description['attacks'].keys())
+    else:
+        targets = [args.target]
+    results = dict()
+    for target in targets:
         st.run_profile(target)
         st.run_attack(target)
         ubs = st.run_eval(target)
         if ubs is not None:
-            print(f'Attack on target {target}:')
-            print('log2 ranks', np.log2(ubs))
-            print('number of successes', np.sum(ubs < eval_utils.MAX_SUCCESS_RANK))
+            if not args.json:
+                print(f'Attack on target {target}:')
+                print('log2 ranks', np.log2(ubs))
+                print('number of successes', np.sum(ubs < eval_utils.MAX_SUCCESS_RANK))
+        results[target] = list(ubs)
+    if args.json:
+        print(json.dumps(results))
 
 if __name__ == '__main__':
     main()
