@@ -90,7 +90,7 @@ The following steps allow to run the demo attack and to evaluate it.
     ```
 1. Install the python package required to run the attack
     ```bash
-    pip install -r setup/requirements.txt
+    (cd setup && pip install -r requirements.txt)
     ```
 1. Run the evaluation in itself 
     ```bash
