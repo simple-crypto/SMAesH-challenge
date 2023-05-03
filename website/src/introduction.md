@@ -44,6 +44,8 @@ is more to come!
 The demo submission implements a textbook attack against the AES S-box output that should be 
 easy to improve. We next share a few ideas of alternative strategies that could be used for this purpose: 
 
+- Try to re-use the demo submission with fewer traces! This is a quick and
+  efficient way to gain points for early candidates. 
 - Exploit more leakage points: the demo targets the shares of the S-box output
   which lies in the combinatorial logic, but the masked states in the bitslice
   S-box or the output of MixColumns leak more.
