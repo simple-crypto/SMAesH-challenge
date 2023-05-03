@@ -3,7 +3,7 @@ authors = ["Gaëtan Cassiers", "Charles Momin"]
 language = "en"
 multilingual = false
 src = "src"
-title = "AES-HPC Challenge"
+title = "SMAesH Challenge"
 
 
 [output.html]
