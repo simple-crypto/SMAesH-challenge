@@ -8,7 +8,7 @@ For each target, we have acquired 3 datasets:
 The training and validation datasets are public, while the test dataset is used
 to evaluate the submissions and kept private by the organizers.
 
-All datasets correspond to a correct usage of the AES-HPC core: for each trace,
+All datasets correspond to a correct usage of the SMAesH core: for each trace,
 the sharing of the key and of the plaintext is fresh.  Moreover, we reseed the
 core before each trace with a fresh seed (the reseeding is not included in the
 trace).  In the training dataset we use a fresh random key and a fresh random

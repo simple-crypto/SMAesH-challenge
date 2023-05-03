@@ -1,6 +1,6 @@
 # Summary
 
-[AES-HPC Challenge Overview](./introduction.md)
+[SMAesH Challenge Overview](./introduction.md)
 
 
 - [Getting started](./getting_started.md)

@@ -197,8 +197,8 @@ accepts the following parameters:
 
 In practice, the [Makefile](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/values-simulations/Makefile) calls Verime with the following arguments under the target `verime`:
 
-* `--ydir ./aes_hpc/hdl/aes_enc128_32bits_hpc2 ./aes_hpc/hdl/aes_enc128_32bits_hpc2/masked_gadgets ./aes_hpc/hdl/aes_enc128_32bits_hpc2/rnd_gen ./aes_hpc/hdl/aes_enc128_32bits_hpc2/sbox`: used to point to the directories in which the AES-HPC source files are located. 
-* `-g d=2`: set the value of the generic `d` at the top-level of the AES-HPC
+* `--ydir ./aes_hpc/hdl/aes_enc128_32bits_hpc2 ./aes_hpc/hdl/aes_enc128_32bits_hpc2/masked_gadgets ./aes_hpc/hdl/aes_enc128_32bits_hpc2/rnd_gen ./aes_hpc/hdl/aes_enc128_32bits_hpc2/sbox`: used to point to the directories in which the SMAesH source files are located. 
+* `-g d=2`: set the value of the generic `d` at the top-level of SMAesH
 * `--top ./aes_hpc/hdl/aes_enc128_32bits_hpc2/aes_enc128_32bits_hpc2.v`: specify the top module path.
 * `--pack aeshpc_new_32bit_d2_lib`: define the package name. 
 * `--build-dir aeshpc_new_32bit_d2_lib`: uses to indicates the directory used for the building process (in practice, a directory with the package name in the current directory).
