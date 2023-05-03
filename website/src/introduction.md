@@ -1,6 +1,8 @@
 # Welcome to the CHES2023 SMAesH Challenge
 
-The SMAesH challenge is a side-channel analysis contest on a masked FPGA
+The SMAesH challenge is a side-channel analysis contest on
+[SMAesH](https://simple-crypto.org/activities/smaesh),
+a masked FPGA
 implementation of the AES.
 Using the public profiling dataset and the open-source hardware design, the
 goal is to mount a key-recovery attack using as few traces as possible.

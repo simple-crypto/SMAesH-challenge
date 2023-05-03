@@ -1,4 +1,4 @@
-# Gettingui started
+# Getting started
 
 A dedicated evaluation framework has been developped for the challenge and is
 available on [Github](https://github.com/simple-crypto/SMAesH-challenge). This

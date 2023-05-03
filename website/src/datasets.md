@@ -33,7 +33,7 @@ execution. In particular, the following fields can be found:
 | | | | |
 
 The datasets have different levels of granularity in terms of data they contain. For the Artix-7 target, the 
-following Table summarizes which fields are provided with each datasets:
+following table summarizes which fields are provided with each datasets:
 
 |      | Training / Validation | Test |
 | ---- | :----: | :----: |
@@ -50,6 +50,9 @@ Finally, the next Table summarizes the global size of each traces (in term of am
 | ---- | :----: | :----: | :----: | :----: | :----: |
 | Artix-7 (\\( d = 2 \\)) | A7_d2 | \\( 2 ^ {24} \\) | \\( 2 ^ {24} \\) | \\( 2 ^ {24} \\) | \\( ns = 4250 \\) |
 
+Dataset for the Spartan-6 target [to come](./spartan6.md)!
+The msk_key and  seed parameters will not be provided in any of these datasets.
+
 
 ## Files organization and dataset reading
 
@@ -57,9 +60,14 @@ The dataset for the SMAesH challenge is
 composed of several datasets, which are grouped by target and by security order
 (denoted as a target isntance). For each target instance, we provide a training
 and a validation dataset (respectively `vk0` and `fk0`). Each dataset is
-described by a manifest file (denoted `manifest.json`) and is composed of
+described by a manifest file (denoted `manifest.json`) that describes the
+content of the dataset (including a file list and a way to check integrity) and
+is composed of
 several sub-directories (one per field stored in the dataset which is
-containing the fields data). The dataset are expected to be read with the tool
+containing the fields data).
+The data files use the [NPY format](https://numpy.org/devdocs/reference/generated/numpy.lib.format.html).
+
+The dataset are expected to be read with the tool
 provided in `dataset.py` specifically implemented for this purpose. It
 provides top level functions that allows to load the data contained in a
 dataset per blocks of arbitrary size (see the definition of `iter_ntraces` in
