@@ -62,6 +62,7 @@ easy to improve. We next share a few ideas of alternative strategies that could 
 
 - **May 2023** Challenge launch with Artix-7 target, submission server opens.
 - **June 2023** Launch of the Spartan-6 target.
+- **2023-09-1** Submission server closes.
 - **2023-09-10** (at CHES) Award ceremony.
 
 Submissions are graded continuously, and the [leaderboard](./leaderboard.md)
@@ -71,7 +72,10 @@ see the [rules](./rules.md) for more details.
 
 ## Contact information
 
-- Mailing list: official announcements and challenge discussions.
+- Mailing list: announcements and challenge discussions.
+[[send a mail]](mailto:smaesh-challenge@freelists.org)
+[[subscribe]](https://www.freelists.org/list/smaesh-challenge)
+[[list archive]](https://www.freelists.org/archive/smaesh-challenge/)
 - [Matrix channel](https://matrix.to/#/#smaesh-challenge:matrix.org) for chatting with other participants, build teams, etc.
 - Directly contact the organizers for private matters: <info@simple-crypto.org>.
 

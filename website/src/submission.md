@@ -1,144 +1,112 @@
 # Submission
 
-In this section, we explain how to properly package your submission before
-uploading it to the challange submission server. 
-At this point you are assumed to have already implemented your attack and
-validated it (see the Profile, Attack and Evaluation sections).
+In this section, we explain how to prepare, package and test your submission,
+before finally uploading it to the evaluation server.
 
-From a global point of view, the following steps allow to generate a valid submission file.
+At this point, we assume that your attack works with `quick_eval.py` (see [Framework](./framework.md)).
 
-1. Preparing the submission directory for the evaluation (see [Preparation of the submission](./submission.html#preparation-of-your-submission).
-1. Evaluate the submission directory (optional, see [Submission Evaluation](./submission.html#submission-evaluation)).
-1. Create the submission archive (see [Building the package archive](./submission.html#preparation-of-the-submssion.md])).
-1. Evaluate the submission archive in a container environment (optional, see [Submission Evaluation](./submission.html#submission-evaluation)).
-1. Upload your submission archive on the server.
 
-The evaluation phases are not strictly necessary for the generation of the
-submission archive. **However, we strongly advise you to carry them out** to ensure
-that the evaluation of your attack candidate will run smoothly once submitted. 
-The following commands performs the steps 1-4 for the demo submission. Please refer to the 
-dedicated sections for further informations. 
+## Submission directory
 
+Put your submission in a directory that satisfies the following (the
+`demo_submission` directory is a good starting point).
+
+1. It **must** contain the file`submission.toml`. See
+   [demo_submission/submission.toml](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/submission.toml)
+   for example and instructions.
+1. If your attacks depend on python packages, put your dependencies in
+   `setup/requirements.txt` (you can generate it with `pip freeze`).
+1. It **must** contain the file `setup/setup.sh` with setup container
+   instructions. If you only depend on python packages, keep the one of
+   `demo_submission/`, otherwise, add your custom build/install steps here (see
+   [Beyond Python](./not_python.md) for details).
+1. Ensure that the ressources required by your submission are generated (e.g.,
+   profile file, etc.). The demo submission is using a library (python wheel)
+   built by verime. It should thus be generated (in `demo_submission/setup/`
+   and must be listed in the file `demo_submission/setup/requirement.txt` for
+   the evaluation to work. 
+   To this end, the command
+   ```bash
+   # Run in venv-demo-eval environment.
+   make -C demo_submission/values-simulations 
+   ```
+   generates the library wheel, copies it into the directory
+   `demo_submission/setup` and updates the file
+   `demo_submission/setup/requirements.txt` accordingly.
+1. If your submission include non-source files (e.g., binary libraries or
+   [profiled models](./profiling.md#outside-the-framework)), it must contain a
+   succint README explaining how to re-generate those from source. It may also
+   explain how your attack works.
+
+
+## First test (in-place, native)
+
+Test your submission with the `test_submission.py` script.
 ```bash
-# Move to the framework directory
-cd $SMAESH_FRAMEWORK
-
-# 1) Evaluate the submission directory
+# To run in the SMAesH-challenge directory, assuming the submission directory is still demo_submission.
+# To run after activating the venv-scripts virtual environment (see "Getting Started").
 python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET
-
-# 2) Generate the package archive
-python3 scripts/build_submission.py --submission-dir demo_submission --package-file mysubmission.zip
-
-# 3) Evaluate the submission archive
-python3 scripts/test_submission.py --package ./mysubmission.zip  --workdir workdir-eval-zip --dataset-dir $SMAESH_DATASET
-
-# 4) Evaluate the submission archive in a container
-python3 scripts/test_submission.py --package ./mysubmission.zip  --workdir workdir-eval-zip-container --dataset-dir $SMAESH_DATASET --apptainer
 ```
 
+If this does not work, it is time to debug your submission. To accelerate the
+debugging process, see the various command-line options of
+`test_submission.py`. In particular, `--only` allows you to run only some steps
+(e.g. `--only attack`).
 
-## Preparation of your submission
 
-To be valid, a submission must be developed in a single directory. The
-structure of the latter is left to the choice of the applicants, but must
-satisfy the following requirements
+## Building and validating the submission package
 
-1. it **must** contain the file`submission.json` at the root (see [demo_submission/submission.toml](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/submission.toml) for an
-   example). The latter is a [TOML](https://toml.io/en/) file configuring the submission. It must contain the following attributes
-    1. `authors`: the list of authors. Organised as a list of entries, where each entry is a dictionary specifying an author. In particular, each dictionary **must** contain the name of the author (under the `key` field) and a valid email address (under the `email` field).
-    1. `name`: the name of the submission package. 
-    1. `license`: the license applying to the submission. Note that only open-source license (permissive or not) will be accepted. 
-    1. `attacks`: the attack configuration claimed to be successful. Multiple targets can be configured and each target **must** specify a 
-    claimed amount of traces for which the submitted attack is supposed to work. 
-1. it **must** contain the file `setup/requirements.txt`. The latter **must**
-   list all the python packages required (following the [pip file
-   format](https://pip.pypa.io/en/stable/reference/requirements-file-format/))
-   by the submission. 
-1. it **must** contain the file `setup/setup.sh`. The latter is required to run
-   the evaluation procedure in a container and is not expected to be modified
-   for submission written only in Python (you can copy the one from the demo
-   submission in that case). 
-1. it may contain a succint README describing the submission package. The
-   main role of the latter is to explain the steps required to reproduce some
-   special feature of the submission, such as how to rebuild an embedded model
-   file.  
-
-## Submission Evaluation
-As a sanity check, the framework provides a way to ensure that your submission
-runs as expected in the our evaluation framework. The script
-[test_submission.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/scripts/test_submission.py) 
-has been specially designed for this purpose. 
-It performs the full evaluation of a submission similarly to what will be done on the server.
-The latter can be done at two levels during development: directly on the submission directory or on the package archive. 
-The following commands show how to use [test_submission.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/scripts/test_submission.py) 
-to perform the evaluation of your submission
-
-1. Move the the cloned framework repository
-    ```bash
-        cd $SMAESH_FRAMEWORK
-    ```
-1. Create a Python virtual environment dedicated to the evaluation (it must be located outside your submission directory). Activate it and install the dependencies required by the 
-evaluation procedure
-    ```bash
-    python3 -m venv venv-demo-eval
-    source venv-demo-eval/bin/activate # Activation with bash shell
-    pip install pip --upgrade
-    pip install -r scripts/requirements.txt
-    ```
-1. Ensure that the ressources required by your submission are generated (e.g., profile file, ...). The demo submission is using a verime library. The latter should thus be generated and must be enlisted in the file `demo_submission/setup/requirement.txt` for the evaluation to work. 
-To this end, the command
-    ```bash
-    make -C demo_submission/values-simulations 
-    ```
-    generates the library wheel, copies it into the directory
-    `demo_submission/setup` and updates the file
-    `demo_submission/setup/requirements.txt` accordingly. We encourage to
-    explain the generation procedure of this kind of specificities instead of embedding large files in your submission. 
-1. Execute the evaluation in itself. The evaluation of your submission can already be done prior to generating the submission zip file, which has the
-    advantage of avoiding costly compression and decompression operations during
-    the developement process. The different steps of the evaluation can be run independently or in an combined manner by running one (or several) of the following commands
-    ```bash
-    ## Run all the phases of the submission evaluation (in order, profiling, attack, evaluation)
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET
-    
-    ## Run the three phases independently
-    # Profiling only 
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only profile
-    # Attack only
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only attack
-    # Evaluation only
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only eval
-    # You can also combine different steps, e.g., attack and evaluation
-    python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --only attack eval
-    ```
-    The evaluation procedure starts by installing all the requirements specified in `demo_submission/setup/requirements.txt`. Then, the evaluation scripts act as a wrapper
-    that execute command line calls to `demo_submission/quick_eval.py`.
-
-To comply with the challenge's rules that limit resources during
-evaluation, submissions will be evaluated within a container runtime. To ensure
-that everything is functioning correctly inside the latter, `test_submission.py`
-framework provides an option to verify it. For the demo submission, you can use the flag
---apptainer as shown next 
-```bash 
-python3 scripts/test_submission.py --package ./demo_submission --package-inplace --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --apptainer
-```
-Initially, a dedicated Singularity container will be created for the submission. The latter is configured to run on Ubuntu 23.04
-runtime. After the runtime setup is complete,
-the script [setup/setup.sh](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/setup/setup.sh) from the submission will be called. This script can
-is used to finalize the configuration of the runtime. It be modified to perform any necessary operations before proceeding to the
-evaluation-specific operations (e.g., building the simulation library with verime).
-
-As a final note, it is also possible to run the evaluation directly on a
-package archive. In such case, the argument `--package` should indicates
-archives's path and the flag `--package-inplace` should not be used anymore 
-
-## Building the package archive
-
-The utilitary
+The
 [scripts/build_submission.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/quick_eval.py)
+scripts
 generates a valid submission `.zip` file based on the submission directory. You can use the following command to generate
 the package archive for the demo submission. 
 ```bash
-python3 scripts/build_submission.py --submission-dir demo_submission --package-file mysubmission.zip
+# (To run in the venv-scripts environment.)
+python3 scripts/build_submission.py --submission-dir ./demo_submission --package-file mysubmission.zip
 ```
-It generates the submission `mysubmission.zip` file that can then be uploaded on the [submission server](TODO). 
+
+Then, you can validate basic elements of its content with
+```bash
+python3 scripts/validate_submission.py mysubmission.zip
+```
+
+## Final tests
+
+Let us now test the content of `mysubmission.zip`.
+```bash
+python3 scripts/test_submission.py --package mysubmission.zip --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET
+```
+
+If this succeeds, we can move to the final test. To ensure a reproducible
+environment, submissions will be evaluated within a (docker-like) container
+runtime.
+The following test ensures that everything is functioning correctly inside the
+container (and in particular that your submission has no un-listed native
+dependencies -- the container is (before `setup.sh` runs) a fresh Ubuntu 23.04).
+It will also validate resource constraints (you may want to relax timeouts if you
+use a slower machine than the evaluation server).
+
+- Install the [Apptainer](https://apptainer.org/) container runtime.
+- Use `test_submission.py` in `--apptainer` mode:
+```bash 
+python3 scripts/test_submission.py --package mysubmission.zip --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --apptainer
+```
+
+If this works, congrats! The evaluation server uses the same command (albeit
+with an additional `--attack-dataset-dir` argument), so you are ready to submit.you are ready to submit.you are ready to submit.you are ready to submit.
+
+If it does not work, for debugging, note that the `apptainer` mode prints the
+commands it runs, so you can see what happens.
+
+You may want to:
+- Use the `--package-inplace` mode of `test_submission.py` to avoid rebuilding the zip at every attempt.
+- Run only some steps of the submission with the `--only` option.
+- Clean up buggy state by deleting the `workdir`.
+- Run commands inside the container using [`apptainer shell`](https://apptainer.org/docs/user/main/index.html).
+
+
+## Upload
+
+Create your team and upload your submission on the
+[submission server](https://submit.smaesh-challenge.simple-crypto.org/). 

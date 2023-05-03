@@ -53,14 +53,14 @@ Finally, the next Table summarizes the global size of each traces (in term of am
 
 ## Files organization and dataset reading
 
-The dataset for the SMAesH challenge is available for download at TODO. it is
+The dataset for the SMAesH challenge is
 composed of several datasets, which are grouped by target and by security order
 (denoted as a target isntance). For each target instance, we provide a training
 and a validation dataset (respectively `vk0` and `fk0`). Each dataset is
-described by a manifest file (denoted 'manifest.json') and is composed of
+described by a manifest file (denoted `manifest.json`) and is composed of
 several sub-directories (one per field stored in the dataset which is
 containing the fields data). The dataset are expected to be read with the tool
-provided in `dataset.py` specifically implemented for this purpose. The later
+provided in `dataset.py` specifically implemented for this purpose. It
 provides top level functions that allows to load the data contained in a
 dataset per blocks of arbitrary size (see the definition of `iter_ntraces` in
 `dataset.py` and its usage in `demo_submission/attack.py` for more details).
@@ -89,3 +89,5 @@ aes_hpc_datasets/
 | | +-- msk_key/
 | | +-- seed/
 ```
+
+See [here](./getting_started.md#downloading-datasets) for download instructions.

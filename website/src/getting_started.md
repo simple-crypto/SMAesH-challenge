@@ -1,4 +1,4 @@
-# Getting started
+# Gettingui started
 
 A dedicated evaluation framework has been developped for the challenge and is
 available on [Github](https://github.com/simple-crypto/SMAesH-challenge). This
@@ -7,61 +7,81 @@ the demo attack provided. More details about the evaluation framework can be
 found in the dedicated [Framework](./framework.md) section.
 
 ## Installing dependencies
-The framework runs with `python >= 3.8`. We suggest using python's standard
-library virtual environment module `venv`. On some python installations, this
-is not included by default (e.g., you have to `apt install python3-venv` to get
-it). 
+
+The framework runs with `python >= 3.8` and requires the following python tools:
+- [`venv`](https://docs.python.org/3/library/venv.html), part of python's
+  standard library, but not included by in some python installations
+  (e.g., on ubuntu, you might have to `apt install python3-venv` to get it). 
+- [`pip`](https://pip.pypa.io/en/stable/installation/), also, part of most
+  python installations (but on ubuntu, `apt install python3-pip` is needed).
 
 Additionally, the demonstration attack depends on
-* [Yosys](https://yosyshq.net/yosys/) (Yosys 0.25 (git sha1 e02b7f64b, gcc 9.4.0-1ubuntu1~20.04.1 -fPIC -Os) tested)
-* [Verilator](https://veripool.org/guide/latest/install.html#git-quick-install) (Verilator 5.006 2023-01-22 rev v5.006)
-* [Verime](https://pypi.org/project/verime/) (v1.0.1 tested)
-* GNU Make (v4.2.1 Built for x86_64-pc-linux-gnu tested)
-* [Apptainer](https://apptainer.org/) (optional, see [Running our example attack](./getting_started.html#running-our-example-attack-profiling-attack-evaluation))
+* [Yosys](https://yosyshq.net/yosys/) (version 0.25 tested, below 0.10 wil likely not work)
+* [Verilator](https://veripool.org/guide/latest/install.html#git-quick-install) (**use version 5.006**, many other version are known not to work)
+* Make
 
 **CAUTION**: we highly recommand to install Verilator from the
 [git](https://github.com/verilator/verilator) and to run Verilator
 [in-place](https://veripool.org/guide/latest/install.html#run-in-place-from-verilator-root) (as recommended by the official documentation).
 
-## Cloning repos
+We **highly recommend** to use the challenge in a unix environment (on windows,
+use [WSL](https://learn.microsoft.com/en-us/windows/wsl/install)).
 
-Run the following commands to clone the challenge framework repository and set the macro. 
-We denote next as `SMAESH_FRAMEWORK` the directory resulting from the clone
-(i.e., the directory `DIR_CLONE/SMAesH-challenge`).
+## Cloning repo
+
+First, clone the challenge framework repository:
 ```bash
-git clone git@github.com/simple-crypto/SMAesH-challenge.git # Using SSH 
-git clone https://github.com/simple-crypto/SMAesH-challenge.git # Using HTTPS
-cd SMAesH-challenge 
-export SMAESH_FRAMEWORK=`pwd` # Set the MACRO
+git clone https://github.com/simple-crypto/SMAesH-challenge.git
 ```
 
 ## Downloading datasets
 
 An archive containing the whole dataset is
 [available](https://uclouvain-my.sharepoint.com/:u:/g/personal/charles_momin_uclouvain_be/Ee1uKH4DOzFCsUfdng3_CQMBuffb0RTspY39hR2kTlfc9Q?e=5WmfKv)
-(~200Go, ~300Go uncompressed).  The latter has been compressed with the
-[Zstandard](http://facebook.github.io/zstd/) utility.  If only parts of the
-dataset are to be downloaded, it is possible to select the files to be
-downloaded via the
-[Nextcloud](https://nextcloud.cism.ucl.ac.be/s/Q2WdNjXzsEtXoDa?path=%2Fsmaesh-challenge)
-hosting service (see [Datasets](./datasets.md) for more info). 
+(~200Go, ~300Go uncompressed). It is compressed with the
+[zstd](http://facebook.github.io/zstd/) tool, and archived in the `tar` format.
 
-Next, we use the macro `SMAESH_DATASET` as the path to the directory where the
-downloaded dataset is stored (i.e., where the path of the directory `smaesh-dataset`). 
+Individual files can be downloaded on our
+[nextcloud](https://nextcloud.cism.ucl.ac.be/s/Q2WdNjXzsEtXoDa?path=%2Fsmaesh-challenge)
+server (see [Datasets](./datasets.md) for more info on the files content).
+
+Next, we use the variable `SMAESH_DATASET` as the path to the directory where the
+downloaded dataset is stored (i.e., the path to the directory `smaesh-dataset`,
+which is the directory that contains the `A7_d2` directory). 
+
+As a final step, format the dataset.
+This operation must be done a single time on each fixed key dataset (it may last a few seconds).
+This will generate a new manifest per dataset (`manifest_split.json`) that will be used by the framework's scripts to evaluate the attack.
+```bash
+# Create the venv for running framework's scripts
+cd SMAesH-challenge
+python3 -m venv venv-scripts
+source venv-scripts/bin/activate # Activate it (adapt if not using bash shell)
+pip install pip --upgrade 
+pip install -r scripts/requirements.txt
+# Run the split_dataset command
+python3 scripts/split_dataset.py --dataset $SMAESH_DATASET/A7_d2/fk0/manifest.json 
+# Leave de venv-scripts virtual environment
+deactivate
+```
 
 ## Running our example attack: profiling, attack, evaluation
+
 The following steps allow to run the demo attack and to evaluate it.  
 
 1. First, we move to the cloned framework directory
     ```bash
-    cd $SMAESH_FRAMEWORK
+    cd SMAesH-challenge
     ```
 1. Then, setup a python virtual environement used for the evaluation, and activate it
     ```bash
-    python3 -m venv venv-demo-eval # Create the venv
-    source venv-demo-eval/bin/activate # Activate it (using bash shell)
+    python3 -m venv venv-demo-eval
+    source venv-demo-eval/bin/activate
     pip install pip --upgrade 
-    pip install verime # install Verime in the venv
+    ```
+1. Install the [verime](https://github.com/simple-crypto/verime) dependency (tool for simulating intermediate values in the masked circuit)
+    ```bash
+    pip install verime
     ```
 1. In the demo submission directory, build the simulation library with Verime
     ```bash
@@ -70,20 +90,14 @@ The following steps allow to run the demo attack and to evaluate it.
     ```
 1. Install the python package required to run the attack
     ```bash
-    (cd setup && pip install -r requirements.txt)
-    ```
-1. Format the dataset. This operation must be done a single time on each dataset (it may last a few seconds).
-    This will generate a new manifest per dataset (denoted `manifest_split.json`) that will be used by the framework's scripts.
-    ```bash
-    python3 split_dataset.py --dataset $SMAESH_DATASET/A7_d2/vk0/manifest.json 
-    python3 split_dataset.py --dataset $SMAESH_DATASET/A7_d2/fk0/manifest.json 
+    pip install -r setup/requirements.txt
     ```
 1. Run the evaluation in itself 
     ```bash
-    # Computes the profile
+    # Profiling step:
     # - uses the dataset vk0
-    # - saves the profile in the current directory
-    python3 quick_eval.py profile --profile-dataset $SMAESH_DATASET/A7_d2/vk0/manifest_split.json --attack-case A7_d2 --save-profile .
+    # - saves the templates in the current directory
+    python3 quick_eval.py profile --profile-dataset $SMAESH_DATASET/A7_d2/vk0/manifest.json --attack-case A7_d2 --save-profile .
     
     # Performs the attack using 16777215 traces 
     # - uses the dataset fk0
@@ -105,23 +119,37 @@ log2 ranks [59.79907288]
 number of successes 1
 ```
 which means that the attacks reduces the rank of the correct key to \\( 2 ^
-{59.79} \\). By default, the profiling phase implemented uses \\( 2^{24}\\)
-traces to build the models, which may result in a significant amount of
-processing time depending on your machine configuration. During development,
-feel free to speed up the process (at the cost of weakening the attack) by
-reducing the amount of traces used (during profiling and/or the attack phase).
+{59.79} \\).
 
-Both phases (profiling and attack) are implemented using two dedicated
-functions in
-[attack.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/attack.py)
-We advise to use the example submission as a basis for any new submission: a
-new attack can easily be developped by tweaking the appropriate function. Try it yourself! 
+By default, the profiling phase implemented uses \\( 2^{24}\\)
+traces to build the models, which may result in a significant
+processing time (it takes about 45 minutes on the [reference machine](./rules.html#evaluation-limits)).
+The attack also runs in abouthe same time on that machine.
+Reducing the number of traces for both steps will reduce their execution time
+(at the expense of a worse key rank, of course).
 
-If necessary, the other sections provide more detailed information on how to
+*Note: you can run multiple steps at once, as in `python3 quick_eval.py profile attack eval ...`.*
+
+## Next steps
+
+It's your turn!
+
+Both phases (profiling and attack) are implemented in the `profile()` and
+`attack()` functions in
+[attack.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/attack.py):
+tweak these functions to implement your revolutionary attack.
+
+If you get the demo submission to run with fewer traces, you can also try to directly [submit it](./submission.md)!
+
+The other pages of this website provide more detailed information on how to
 develop a submission. In particular: 
 
-* [Target](./targets.md) details the acquisition setup used for the different
-  targets. 
-* [Datasets](./datasets.md) details the architecture of the dataset.
-* [Framework](./framework.md) details how to use the framework of the challenge to develop, evaluate and package a new submission. 
+* [Framework](./framework.md) details how to use the framework of the challenge to develop, evaluate, package and send a new submission. 
+* [Rules](./rules.md): see how to get points, and what are the constraints on submitted attacks.
+* [Target](./targets.md): acquisition setup used for the different targets. 
+* [Datasets](./datasets.md): content of the datasets.
+
+Have a look at our [suggestions](./introduction.md#attack-ideas) and at the
+[SMAesH documentation](https://simple-crypto.org/activities/smaesh) to get
+ideas for improved attacks.
 
