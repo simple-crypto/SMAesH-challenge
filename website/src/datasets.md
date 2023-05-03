@@ -78,7 +78,7 @@ dataset will be extended with new target cases. Currently, only the Artix7 case 
 and the dataset organisation is depicted by the following tree
 
 ```
-aes_hpc_datasets/
+smaesh-dataset/
 +-- A7_d2/
 | +-- vk0/
 | | + manifest.json

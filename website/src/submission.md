@@ -94,7 +94,7 @@ python3 scripts/test_submission.py --package mysubmission.zip --workdir workdir-
 ```
 
 If this works, congrats! The evaluation server uses the same command (albeit
-with an additional `--attack-dataset-dir` argument), so you are ready to submit.you are ready to submit.you are ready to submit.you are ready to submit.
+with an additional `--attack-dataset-dir` argument), so you are ready to submit.
 
 If it does not work, for debugging, note that the `apptainer` mode prints the
 commands it runs, so you can see what happens.

@@ -16,7 +16,7 @@ The framework runs with `python >= 3.8` and requires the following python tools:
   python installations (but on ubuntu, `apt install python3-pip` is needed).
 
 Additionally, the demonstration attack depends on
-* [Yosys](https://yosyshq.net/yosys/) (version 0.25 tested, below 0.10 wil likely not work)
+* [Yosys](https://yosyshq.net/yosys/) (version 0.25 tested, below 0.10 will likely not work)
 * [Verilator](https://veripool.org/guide/latest/install.html#git-quick-install) (**use version 5.006**, many other version are known not to work)
 * Make
 
@@ -42,7 +42,7 @@ An archive containing the whole dataset is
 [zstd](http://facebook.github.io/zstd/) tool, and archived in the `tar` format.
 
 Individual files can be downloaded on our
-[nextcloud](https://nextcloud.cism.ucl.ac.be/s/Q2WdNjXzsEtXoDa?path=%2Fsmaesh-challenge)
+[nextcloud](https://nextcloud.cism.ucl.ac.be/s/82XMewXRBP5PZNP)
 server (see [Datasets](./datasets.md) for more info on the files content).
 
 Next, we use the variable `SMAESH_DATASET` as the path to the directory where the

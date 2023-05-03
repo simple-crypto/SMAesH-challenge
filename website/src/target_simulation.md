@@ -5,7 +5,7 @@ handles. To this end, our strategy is to simulate the behaviour of the circuit
 and to recover the values that interest us. This solution avoids the need to
 write specific code for each targeted signal (which is time consuming and can
 lead to errors). The verime tool has been specifically developped for this purpose. 
-IN the following sections, we explain how the latter is used for the demo submission provided.
+In the following sections, we explain how the latter is used for the demo submission provided.
 
 ## Identification of useful signals 
 For the demo attack, we consider that an adversary wants to perform a template
@@ -14,7 +14,7 @@ power consumption of the implementation as a function of the share values
 manipulated after the first SubBytes layer (i.e., the bytes of the state exiting
 the Sboxes layer of the first round). 
 
-As explained in detailed in the [SMAesh
+As explained in details in the [SMAesh
 documentation](https://github.com/simple-crypto/SMAesH), these values are
 manipulated by the core at the end of a round execution. More particularly,
 the wires `bytes_from_SB` coming from the sboxes instances hold the target values when
@@ -176,7 +176,7 @@ to use the later to create the python wheel. Basically, the first step consists 
 Verime with the appropriate arguments in order to setup the package. The tool
 will analyze the hardware architecture, identify the annoted signals and create
 C++ files in order to probe these signals together with Verilator. Besides, it will generate all the python
-environment used in the wheel building process.  As shown by ts helper, Verime
+environment used in the wheel building process.  As shown by its helper, Verime
 accepts the following parameters:
 
 ```bash
@@ -197,14 +197,14 @@ accepts the following parameters:
 
 In practice, the [Makefile](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/values-simulations/Makefile) calls Verime with the following arguments under the target `verime`:
 
-* `--ydir ./aes_hpc/hdl/aes_enc128_32bits_hpc2 ./aes_hpc/hdl/aes_enc128_32bits_hpc2/masked_gadgets ./aes_hpc/hdl/aes_enc128_32bits_hpc2/rnd_gen ./aes_hpc/hdl/aes_enc128_32bits_hpc2/sbox`: used to point to the directories in which the SMAesH source files are located. 
+* `--ydir ./aes_enc128_32bits_hpc2 ./aes_enc128_32bits_hpc2/masked_gadgets ./aes_enc128_32bits_hpc2/rnd_gen ./aes_enc128_32bits_hpc2/sbox`: used to point to the directories in which the SMAesH source files are located. 
 * `-g d=2`: set the value of the generic `d` at the top-level of SMAesH
-* `--top ./aes_hpc/hdl/aes_enc128_32bits_hpc2/aes_enc128_32bits_hpc2.v`: specify the top module path.
-* `--pack aeshpc_new_32bit_d2_lib`: define the package name. 
-* `--build-dir aeshpc_new_32bit_d2_lib`: uses to indicates the directory used for the building process (in practice, a directory with the package name in the current directory).
-* `--simu TODO`: indicates the path to the [simu_aeshpc_32bit.cpp](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/values-simulations/simu_aeshpc_32bit.cpp) file.
+* `--top ./aes_enc128_32bits_hpc2/aes_enc128_32bits_hpc2.v`: specifies the top module path.
+* `--pack aeshpc_32bit_d2_lib`: defines the package name. 
+* `--build-dir aeshpc_new_32bit_d2_lib`: used to indicates the directory used for the building process (in practice, a directory with the package name in the current directory).
+* `--simu simu_aeshpc_32bit.cpp`: indicates the path to the [simu_aeshpc_32bit.cpp](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/values-simulations/simu_aeshpc_32bit.cpp) file.
 
-After the Verime execution, the directory defined with `--build-dir` contains a
+After the Verime execution, the directory defined with `--build-dir` contains an
 automatically generated Makefile. The latter first uses Verilator in order to
 build a shared library. The later will then be used as an efficient backend
 simulator. Finally, the python package is generated and the wheel

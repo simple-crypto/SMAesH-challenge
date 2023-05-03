@@ -21,7 +21,7 @@ The computation of the values manipulated by internal wires of the target may be
 required during the profiling phase. While you can implement your
 simulation procedure based on the
 [SMAesH core architecture](https://github.com/simple-crypto/SMAesH), we provide
-scirpts to build a simulation library with Verime from the verilog code of the target (see
+scripts to build a simulation library with Verime from the verilog code of the target (see
 [Target simulation](./target_simulation.md)).  On the provided example attack, the
 profiling phase consists in creating gaussian templates (together with a
 reduction of dimensionality) for every shares of each bytes after the first
