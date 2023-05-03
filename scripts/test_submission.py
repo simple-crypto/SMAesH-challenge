@@ -269,9 +269,9 @@ class PythonSubmissionTest(SubmissionTest):
             builder.create(venv_dir)
         self.venv_python = self.venv.env_exec_cmd
         if self.only('setup'):
-            self.run_python(['-m', 'pip', 'install', '--upgrade', 'pip','--break-system-packages'])
+            self.run_python(['-m', 'pip', 'install', '--upgrade', 'pip'])
             self.run_python(
-                    ['-m', 'pip', 'install', '-r', 'requirements.txt','--break-system-packages'],
+                    ['-m', 'pip', 'install', '-r', 'requirements.txt'],
                     cwd=self.submission_dir / 'setup'
                     )
 
