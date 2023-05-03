@@ -8,7 +8,7 @@ import numpy as np
 msgpack_numpy.patch(allow_pickle=False)
 
 MAX_SUCCESS_RANK = 2**64
-MAX_SUBKEY_SIZE = 16 # TODO Do we want 8 or 16 here ?
+MAX_SUBKEY_SIZE = 16
 
 def load_kg(guess_path):
     with open(guess_path, 'rb') as f:

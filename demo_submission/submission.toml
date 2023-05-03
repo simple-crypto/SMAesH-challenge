@@ -1,9 +1,10 @@
 ### WARNING: The full submission, including this file, will be made public. ###
+# This is a TOML file https://toml.io/en/.
 
 # Name of the submission.
 # This name must change at every new submission you make.
 name = "Demo-1"
-# Team name, as registered on the submission server.
+# Team name, must be the same as the registered user name on the submission server.
 team = "Organizers"
 # Author list (pseudonyms allowed).
 authors = [
@@ -18,6 +19,7 @@ authors = [
 # We recomment using the Apache-2.0 license or the  GPL-3.0-or-later license.
 license = "Apache-2.0"
 
-# Number of attack traces for each new attack contained in this submission.
+# Choose which target your attack applies to.
 [attacks.A7_d2]
+# Number of attack traces (this does not impact the availability of the full profiling dataset).
 n_traces = 16777215

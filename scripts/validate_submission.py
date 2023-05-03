@@ -76,4 +76,7 @@ def validate_submission(f, targets=TARGETS):
     
 if __name__ == '__main__':
     import sys
-    validate_submission(open(sys.argv[1], 'rb'))
+    description = validate_submission(open(sys.argv[1], 'rb'))
+    if description['name'].lower().startswith('demo'):
+        print('WARNING: Your submission name starts with "demo". Did you forget to change it from the default?', file=sys.stderr)
+    print("Validation successful.", file=sys.stderr)

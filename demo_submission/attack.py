@@ -69,7 +69,9 @@ class Attack:
         # it is 16).
         # If you want to use only a part of a dataset, see the method
         # DatasetReader.iter_ntraces(max_ntraces=..., start_trace=...)
-        return self.profile_sasca(profile_datasets)
+
+        # As required, we end the function by setting the value of the variable 'self.profiled_model'.
+        self.profiled_model = self.profile_sasca(profile_datasets)
 
     def attack(self, attack_dataset: DatasetReader) -> KeyGuess:
         # To be completed.
@@ -256,13 +258,11 @@ class Attack:
         ##### Finally, we generate here the model as a dictionnary that holds
         # the POIs and the TapSignal configuration used as well as the computed
         # LDAs obejcts. 
-        dic_model = {
+        return {
                 "pois_SB":pois_SB,
                 "tap_config":TAP_CONFIG,
                 "lda_obj_SB":lda_state_SB,
                 }
-        # As required, we end the function by setting the value of the variable 'self.profiled_model'.
-        self.profiled_model = dic_model
 
     # This function is the practical implementation of the attack of the example submission package. 
     def attack_sasca(self, attack_dataset: DatasetReader) -> KeyGuess: 
