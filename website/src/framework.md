@@ -47,7 +47,7 @@ Additionally, the demonstration attack depends on
 * [Yosys](https://yosyshq.net/yosys/) (Yosys 0.25 (git sha1 e02b7f64b, gcc 9.4.0-1ubuntu1~20.04.1 -fPIC -Os) tested)
 * [Verilator](https://www.veripool.org/verilator/) (Verilator 5.006 2023-01-22 rev v5.006)
 * Python (Python 3.10.6 tested)
-* [Verime](https://pypi.org/project/verime/) (v1.0.0 tested)
+* [Verime](https://pypi.org/project/verime/) (v1.0.1 tested)
 * GNU Make (v4.2.1 Built for x86_64-pc-linux-gnu tested)
 * [Apptainer](https://apptainer.org/) (optional, see [Evaluation](./evaluation.md))
 

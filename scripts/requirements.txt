@@ -3,4 +3,4 @@ msgpack-numpy==0.4.8
 scalib>=0.5.4
 jsonschema==4.17.3
 tomli==2.0.1
-verime==1.0.0
+verime==1.0.1
