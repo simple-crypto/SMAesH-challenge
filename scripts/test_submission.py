@@ -386,16 +386,21 @@ def main():
     else:
         targets = [args.target]
     results = dict()
+
     for target in targets:
         st.run_profile(target)
         st.run_attack(target)
         ubs = st.run_eval(target)
+
         if ubs is not None:
+            ubs = np.log2(ubs)
             if not args.json:
                 print(f'Attack on target {target}:')
-                print('log2 ranks', np.log2(ubs))
+                print('log2 ranks', ubs)
                 print('number of successes', np.sum(ubs < eval_utils.MAX_SUCCESS_RANK))
-        results[target] = list(ubs)
+            results[target] = list(ubs)
+        else:
+            results[target] = None
     if args.json:
         print(json.dumps(results))
 
