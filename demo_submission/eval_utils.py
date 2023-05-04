@@ -19,6 +19,5 @@ def eval_attack(key_guess, attack_dataset_path):
     attack_dataset = DatasetReader.from_manifest(attack_dataset_path)
     assert key_guess.max_subkey_size() <= MAX_SUBKEY_SIZE
     key = [e['umsk_key'][0] for e in attack_dataset.iter_ntraces(1, fields=['umsk_key'])][0]
-    print(key)
     ub = key_guess.key_rank_ub(np.unpackbits(key,bitorder='little').tolist())
     return ub
