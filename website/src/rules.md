@@ -85,22 +85,24 @@ Points are awarded for two kinds of achievements:
 - improving over the state of the art,
 - remaining the state of the art.
 
-More precisely, given the current challenger \\(A_c\\), everytime a new breakthrough attack \\(A_{c'}\\) is made public and becomes the challenger:
+More precisely:
 
-1. \\(A_{c'}\\) is awarded \\(t \cdot \log_2(n_{c}/n_{c'})\\) points where
-    + \\(t\\) is the number of days since \\(A_c\\) was announced,
-    + \\(n_{c'}\\) is the claim of \\(A_{c'}\\),
-    + \\(n_{c}\\) is the claim of \\(A_c\\).
-2. Each breakthrough attack \\(A\\) announced after \\(A_{c'}\\) was announced ("grace period" submissions) is awarded
-  \\(t \cdot \log_2(n_{c}/n_a)\\) points with \\(n_a\\) the claim of \\(A\\).
-3. The previous challenger is awarded \\(t \cdot \log_2(1/0.9)\\) points.
+1. When new breakthrough attack \\(A\\) is announced,
+\\(A\\) is awarded \\(t \cdot \log_2(n_{C}/n_{A})\\) points where
+    + \\(C\\) is the current challenger,
+    + \\(n_{C}\\) is the claim of \\(C\\),
+    + \\(n_{A}\\) is the claim of \\(A\\),
+    + \\(t_{C}\\) is the survival time of \\(C\\), defined as the (fractional)
+      number of days between the announce of \\(C\\) and the announce of the
+      next challenger.
+2. A challenger \\(C\\) receives \\(t_{C} \cdot \log_2(1/0.9)\\) additional points.
 
-Initially, before publication of a challenger, \\(n_{c'}\\) is the number of traces in
-an evaluation sub-dataset (or claim of the demo attack if there is one) and the
-reference date for \\(t\\) is two weeks before the opening of the submissions for that target.
+Initially, before publication of a challenger, \\(n_C\\) is the number of
+traces in the test dataset and the starting date for the survival time of the
+first challenger is the opening date of the submission server for that target.
+At the end of the challenge, the survival time for the last challenger ends at
+the closing time of the submission server.
 
-At the end of the challenge (two weeks after the submission server is closed),
-points are awarded to the current challenger following rule 3. above.
 
 ### Point accumulation
 
