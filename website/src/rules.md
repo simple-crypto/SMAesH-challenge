@@ -23,7 +23,7 @@ documentation material of the contest.*
 5. The whole challenge (attacks, evaluations, point and prizes) is run indepndently for each target.
 6. Each attack comes with a *claim*, which is the number of online traces needed for the attack.
 7. Attacks are made public (attack name, team name, submission date and claim) as soon as they are
-   submitted. Submission packages are also public, after a 7 days embargo.
+   submitted. Submission packages are also public, after a 10 days embargo.
 8. Sample submissions can be sent to the organizers for testing correct execution of scripts on the evaluation machine.
 
 ### Attack evaluation
@@ -39,7 +39,7 @@ evaluation is done.
 ### Evaluation limits
 
 - The evaluation will be run on a computer with a Threadripper 3990X processor, a Nvidia A6000 GPU and 128GB of available RAM.
-- The execution time of an attack will be limited to 2h.
+- The execution time of an attack (excluding profiling) will be limited to 4h.
 
 ## Grading system
 
