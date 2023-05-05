@@ -18,25 +18,20 @@ documentation material of the contest.*
    will be evaluated by the organizers.
 2. The format and execution interfaces for the submissions is explained in the
    documentation available on the challenge website.
-3. Submissions can be submitted at any time on the challenge website.
-4. For each target, the submission contains a *claim*, which is the number of online traces needed for the attack.
-5. Submissions will be made public over the course of the challenge.
-6. You are allowed to use any means you consider necessary to solve the
-   challenges, except attacking the infrastructure hosting the challenges or
-   extracting unauthorized data from the evaluation environment.
-7. Submissions may be anonymous, but only winners accepting de-anonymization will get a prize.
+3. Attacks can be submitted at any time on the challenge website as a "submission package" file.
+4. Submission packages will be made public 7 days after they are submitted.
+5. A submission can contain attacks for multiple targets. Each attack will be processed independently.
+6. The whole challenge (attacks, evaluations, point and prizes) is run indepndently for each target.
+7. Each attack comes with a *claim*, which is the number of online traces needed for the attack.
 8. Sample submissions can be sent to the organizers for testing correct execution of scripts on the evaluation machine.
 
-### Submission evaluation
+### Attack evaluation
 
-For each target covered by the submission, the attack will be run for
-the corresponding test dataset, using the provided evaluation framework
-restricted to the number of online traces claimed in the submission.
+Each submitted attack will be run for the corresponding test dataset restricted
+to the number of online traces claimed by the attack, using the challenge
+evaluation framework.
 The attack is succesfull if the upper-bound on the estimated rank is below
 \\(2^{68}\\).
-
-The result of the evaluation is, for each target where the attack is
-successful, a break in \\(n\\) traces where \\(n\\) is the claim.
 
 ### Evaluation limits
 
@@ -45,71 +40,26 @@ successful, a break in \\(n\\) traces where \\(n\\) is the claim.
 
 ## Grading system
 
-**TL;DR:** Submit your best attack ASAP, improve, run to submit when a attack is
-announced and take inspiration from other's attacks.
+**TL;DR:** You gain 1 point every hour your attack remains the best one.
 
 ### Attack acceptance 
 
-Submissions can be submitted at any point in time, and will be evaluated at
-unspecified and irregular intervals (normally multiple times a week).
-If a team makes a series of submissions separated by less than 6 days, only the
-last one is guaranteed to be evaluated: the other ones might not be evaluated
-(an already-evaluated attack is never discarded).
-The submissions are evaluated following the submission order, and are evaluated independently for each target.
 
-For each target, there is at any point in time a **challenger** attack, which is the best public attack.
-(Initially, the challenger is the demo attack or dataset size.)
+Attacks will be evaluated at unspecified and irregular intervals (normally
+multiple times a week), in the order in which they have been submitted.
 
-A submission with a break in a given target, is a *breakthrough attack* for that
-target if it reduces by at least 10% the number of online attack traces over
-the challenger.
-An attack will get points if and only if it is a breakthrough attack.
+If a team submits a new attack less than 3 days after submitting its previous attack,
+and that that previous attack has not been evaluated yet, then it will not be evaluated.
 
-All *breakthrough attacks* are:
+When the time comes to evaluate an attack, if its claim is more than 90% of the
+best successful attack evaluated so far, then it is not evaluated (i.e., a 10% improvement is required).
 
-- **announced** on the submission website as soon as they are graded (i.e., only team name and claim),
-- **made public** 2 weeks after the announcement (i.e., the full submission is publicly available).
-  At this point, it becomes the challenger if it is better than the previous challenger.
+### Points
 
-*Grace period.*
-The above rules imply the existence of a *grace period* of two weeks for competing attacks!
-That is, after announcement of a breakthrough attack, a team can submit an
-attack with a similar (can be better of worse) claim within two weeks, and get
-their attack graded against the current challenger and not the concurrent
-breakthrough attack.
+Points are countinuously awarded for the best successful attack, at the rate of 1 point per hour.
 
-### Submission points
-
-Points are awarded for two kinds of achievements:
-
-- improving over the state of the art,
-- remaining the state of the art.
-
-More precisely:
-
-1. When new breakthrough attack \\(A\\) is announced,
-\\(A\\) is awarded \\(t \cdot \log_2(n_{C}/n_{A})\\) points where
-    + \\(C\\) is the current challenger,
-    + \\(n_{C}\\) is the claim of \\(C\\),
-    + \\(n_{A}\\) is the claim of \\(A\\),
-    + \\(t_{C}\\) is the survival time of \\(C\\), defined as the (fractional)
-      number of days between the announce of \\(C\\) and the announce of the
-      next challenger.
-2. A challenger \\(C\\) receives \\(t_{C} \cdot \log_2(1/0.9)\\) additional points.
-
-Initially, before publication of a challenger, \\(n_C\\) is the number of
-traces in the test dataset and the starting date for the survival time of the
-first challenger is the opening date of the submission server for that target.
-At the end of the challenge, the survival time for the last challenger ends at
-the closing time of the submission server.
-
-
-### Point accumulation
-
-- The points of a team for a target is the total of the points awarded to their
-  attacks for that target.
-- Authentication of a team or individual is done with a secret token created on
-  the first submission. In case of loss, there are no recovery options.
+The dates taken into consideration are the date/time of submission of the attack (not the time of evaluation).
+The accumulation of points stops when the submission server closes at the end of the challenge.
 
 ## Prize
 
@@ -121,5 +71,11 @@ The awarded teams will be asked to send a description of their best attack.
 
 ## Final remarks
 
-- The organisers reserve the right to change in any way the contest rules or to reject any submission, including with retroactive effect.
-
+- Any time interval of 24 hours is a day.
+- You are allowed to use any means you consider necessary to solve the
+  challenges, except attacking the infrastructure hosting the challenges or
+  extracting unauthorized data from the evaluation environment.
+- The organisers reserve the right to change in any way the contest rules or to
+  reject any submission, including with retroactive effect.
+- Submissions may be anonymous, but only winners accepting de-anonymization
+  will get a prize.

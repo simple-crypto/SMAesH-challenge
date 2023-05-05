@@ -35,6 +35,8 @@ instance functions `save_profile()` and `load_profile()` (this is managed by
 [quick_eval.py](https://github.com/simple-crypto/SMAesH-challenge/blob/main/demo_submission/quick_eval.py)).
 
 When you submit a submission to the evaluation server, this profiling phase will be run.
+There is a timeout of 4h for this run. If your profiling duration exceeeds that
+limit, you can embed your profiles in the submission (see below).
 
 ## Outside the framework
 
