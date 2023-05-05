@@ -20,10 +20,10 @@ documentation material of the contest.*
    documentation available on the challenge website.
 3. Attacks can be submitted at any time on the challenge website as a "submission package" file.
 4. A submission can contain attacks for multiple targets. Each attack will be processed independently.
-5. Attacks are made public (team name and claim) as soon as they are
+5. The whole challenge (attacks, evaluations, point and prizes) is run indepndently for each target.
+6. Each attack comes with a *claim*, which is the number of online traces needed for the attack.
+7. Attacks are made public (attack name, team name, submission date and claim) as soon as they are
    submitted. Submission packages are also public, after a 7 days embargo.
-6. The whole challenge (attacks, evaluations, point and prizes) is run indepndently for each target.
-7. Each attack comes with a *claim*, which is the number of online traces needed for the attack.
 8. Sample submissions can be sent to the organizers for testing correct execution of scripts on the evaluation machine.
 
 ### Attack evaluation
