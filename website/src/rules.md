@@ -27,7 +27,7 @@ documentation material of the contest.*
 
 ### Attack evaluation
 
-Each submitted attack will be run for the corresponding test dataset restricted
+Each submitted attack will be run for the corresponding private test dataset restricted
 to the number of online traces claimed by the attack, using the challenge
 evaluation framework.
 The attack is succesfull if the upper-bound on the estimated rank is below
