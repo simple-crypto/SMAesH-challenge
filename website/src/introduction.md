@@ -7,7 +7,7 @@ implementation of the AES.
 Using the public profiling dataset and the open-source hardware design, the
 goal is to mount a key-recovery attack using as few traces as possible.
 
-Winners will be announced and rewarded at CHES2023.
+Winners will be announced and [rewarded](./rules.md#prize) at CHES2023.
 
 **Get started [now](./getting_started.md)!**
 
@@ -64,7 +64,7 @@ easy to improve. We next share a few ideas of alternative strategies that could 
 
 ## Timeline
 
-- **May 2023** Challenge launch with Artix-7 target, submission server opens.
+- **2023-05-08** Challenge launch with Artix-7 target, submission server opens.
 - **June 2023** Launch of the Spartan-6 target.
 - **2023-09-1** Submission server closes.
 - **2023-09-10** (at CHES) Award ceremony.
