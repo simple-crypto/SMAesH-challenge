@@ -40,6 +40,10 @@ An archive containing the whole dataset is
 [available](https://uclouvain-my.sharepoint.com/:u:/g/personal/charles_momin_uclouvain_be/Ee1uKH4DOzFCsUfdng3_CQMBuffb0RTspY39hR2kTlfc9Q?e=5WmfKv)
 (~200Go, ~300Go uncompressed). It is compressed with the
 [zstd](http://facebook.github.io/zstd/) tool, and archived in the `tar` format.
+To decompress it, run
+```bash
+zstdcat -T0 smaesh-dataset-v1.tar.zstd | tar xv
+```
 
 Individual files can be downloaded on our
 [nextcloud](https://nextcloud.cism.ucl.ac.be/s/82XMewXRBP5PZNP)
