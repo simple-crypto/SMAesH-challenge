@@ -295,7 +295,7 @@ class ApptainerSubmissionTest(SubmissionTest):
     MEMORY_LIMIT = '128G'
     SETUP_DURATION = 15*60 # s
     PROFILE_DURATION = 4*3600 # s
-    ATTACK_DURATION = 2*3600 # s
+    ATTACK_DURATION = 4*3600 # s
 
     SYSTEMD_CMD = f'systemd-run --user --scope -p MemoryMax={MEMORY_LIMIT} -p MemorySwapMax=0'
     APP_EXEC_BASE = 'apptainer exec'
