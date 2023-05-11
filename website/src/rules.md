@@ -67,10 +67,11 @@ The accumulation of points stops when the submission server closes at the end of
 ## Prize
 
 For each target:
-- a prize of 1000 € is awarded to the best team,
-- a prize of 500 € is awarded to the second best team,
+- a prize of 1000 € is awarded to the team with the most points,
+- a prize of 500 € is awarded to the team with the best attack at the end of the challenge.
 
-The awarded teams will be asked to send a description of their best attack.
+The awarded teams will be asked to send a short description of their attacks.
+Teams cannot win more than one award.
 
 ## Final remarks
 
