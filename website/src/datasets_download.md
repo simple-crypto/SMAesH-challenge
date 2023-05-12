@@ -2,7 +2,8 @@
 
 ## SMAesH-A7_d2
 
-The `SMAesH-A7_d2-vk0` and `SMAesH-A7_d2-fk0` are available as:
+The `SMAesH-A7_d2-vk0` and `SMAesH-A7_d2-fk0` datasets are currently available
+on multiple servers.
 
 ### Compressed archive, single-file
 
