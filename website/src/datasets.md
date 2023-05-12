@@ -101,7 +101,7 @@ smaesh-dataset/
 | | +-- seed/
 ```
 
-See [here](./getting_started.md#downloading-datasets) for download instructions.
+See [here](./datasets_download.md) for download instructions.
 
 ### Hashes of datasets
 

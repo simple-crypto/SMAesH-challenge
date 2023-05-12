@@ -34,22 +34,11 @@ First, clone the challenge framework repository:
 git clone https://github.com/simple-crypto/SMAesH-challenge.git
 ```
 
-## Downloading datasets
+## Downloading the datasets
 
-An archive containing the whole dataset is
-[available](https://uclouvain-my.sharepoint.com/:u:/g/personal/charles_momin_uclouvain_be/Ee1uKH4DOzFCsUfdng3_CQMBuffb0RTspY39hR2kTlfc9Q?e=5WmfKv)
-(~200Go, ~300Go uncompressed). It is compressed with the
-[zstd](http://facebook.github.io/zstd/) tool, and archived in the `tar` format.
-To decompress it, run
-```bash
-zstdcat -T0 smaesh-dataset-v1.tar.zstd | tar xv
-```
+See [this page](./datasets_download.md) for downloading the datasets.
 
-Individual files can be downloaded on our
-[nextcloud](https://nextcloud.cism.ucl.ac.be/s/82XMewXRBP5PZNP)
-server (see [Datasets](./datasets.md) for more info on the files content).
-
-Next, we use the variable `SMAESH_DATASET` as the path to the directory where the
+In the following, we use the variable `SMAESH_DATASET` as the path to the directory where the
 downloaded dataset is stored (i.e., the path to the directory `smaesh-dataset`,
 which is the directory that contains the `A7_d2` directory). 
 
