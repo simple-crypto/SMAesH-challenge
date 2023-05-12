@@ -6,11 +6,12 @@ The `SMAesH-A7_d2-vk0` and `SMAesH-A7_d2-fk0` are available as:
 
 ### Compressed archive, single-file
 
-A compressed archive (~200GB, ~300GB decompressed) available [here](TODO). It
-can be easily downloaded with `wget` (download can be resumed if interrupted by
+A compressed archive (~200GB, ~300GB decompressed) available
+[here](https://seafile.iaik.tugraz.at/f/781ac3e7ad2949129502/). It can be
+easily downloaded with `wget` (download can be resumed if interrupted by
 re-launching the same command):
 ```bash
-wget -c --trust-server-names TODO
+wget -c --trust-server-names https://seafile.iaik.tugraz.at/f/781ac3e7ad2949129502/\?dl\=1
 ```
 (File size: `211067203762 bytes`, SHA256: `bde1b7a930c9cef0193baa1c56a013cbbd5cf4da38ec1767076c06e980778b49`.)
 It is compressed with the [zstd](http://facebook.github.io/zstd/) tool
