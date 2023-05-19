@@ -50,6 +50,17 @@ def parse_args():
             help='Directory containing the attack dataset (default: same as profiling).',
             )
     parser.add_argument(
+            '--attack-dataset-manifest-dir',
+            type=str,
+            help='Directory containing the manifests of the attack dataset (default: --attack-dataset-dir).',
+            )
+    parser.add_argument(
+            '--attack-dataset-name',
+            type=str,
+            default='fk0',
+            help='Name of the attack dataset (default: fk0).',
+            )
+    parser.add_argument(
             '--package-inplace',
             default=False,
             action="store_true",
@@ -81,8 +92,6 @@ def parse_args():
 
 DATASETS_PROFILE = ['vk0', 'fk0']
 
-# To be changed for evaluation using private dataset.
-DATASETS_ATTACK = ['fk0']
 ATTACK_MANIFEST_NAME = 'manifest_split.json'
 
 ATTACK_FIELDS = ['traces', 'umsk_plaintext']
@@ -99,10 +108,15 @@ class SubmissionTest:
         self.workdir = Path(args.workdir).resolve()
         self.dataset_dir = Path(args.dataset_dir).resolve()
         self.profile_dataset_root = self.dataset_dir
+        self.attack_datasets = [args.attack_dataset_name]
         if args.attack_dataset_dir is None:
             self.attack_dataset_dir = self.dataset_dir
         else:
             self.attack_dataset_dir = Path(args.attack_dataset_dir).resolve()
+        if args.attack_dataset_manifest_dir is None:
+            self.attack_dataset_manifest_dir = self.attack_dataset_dir
+        else:
+            self.attack_dataset_manifest_dir = Path(args.attack_dataset_manifest_dir).resolve()
         self.custom_attack_dataset_root = self.attack_dataset_dir
         if args.empty_workdir:
             _clean_dir(self.workdir)
@@ -171,13 +185,16 @@ class SubmissionTest:
         return self.guess_file(ds_name, target)
 
     def attack_dataset_path(self, ds_name, target):
-        return self.attack_dataset_dir / target / ds_name / ATTACK_MANIFEST_NAME 
+        return self.attack_dataset_manifest_dir / target / ds_name / ATTACK_MANIFEST_NAME 
+
+    def attack_dataset_root(self, ds_name, target):
+        return self.attack_dataset_dir / target / ds_name
 
     def custom_attack_dataset_path(self, ds_name, target):
         return self.custom_attack_dataset_dir / target / ds_name / 'manifest_custom.json'
 
     def attack_prefix(self, ds_name, target):
-        return self.attack_dataset_path(ds_name, target).parent
+        return self.attack_dataset_root(ds_name, target)
 
     def custom_attack_manifest(self, ds_name, target):
         return self.custom_attack_dataset_path(ds_name, target)
@@ -185,10 +202,11 @@ class SubmissionTest:
     def write_custom_attack_dataset(self, ds_name, target):
         _clean_dir(self.custom_attack_dataset_path(ds_name, target).parent, re_create=True)
         ds_path = self.attack_dataset_path(ds_name, target).resolve()
+        ds_root = self.attack_dataset_root(ds_name, target).resolve()
         ds = dataset.DatasetReader.from_manifest(ds_path)
         ds = _make_attack_dataset(ds, self.description['attacks'][target]['n_traces'])
         def map_ds_path_to_prefix(path):
-            rel_path = path.relative_to(ds_path.parent)
+            rel_path = path.relative_to(ds_root)
             return self.attack_prefix(ds_name, target) / rel_path
         ds.save_to(
                 self.custom_attack_dataset_path(ds_name, target),
@@ -197,7 +215,7 @@ class SubmissionTest:
 
     def run_attack(self, target, attacks=None):
         if attacks is None:
-            attacks = DATASETS_ATTACK
+            attacks = self.attack_datasets
         if self.only('attack'):
             for ds_name in attacks:
                 self.write_custom_attack_dataset(ds_name, target)
@@ -217,7 +235,7 @@ class SubmissionTest:
 
     def run_eval(self, target, attacks=None):
         if attacks is None:
-            attacks = DATASETS_ATTACK
+            attacks = self.attack_datasets
         if self.only('eval'):
             ubs = []
             for ds_name in attacks:
@@ -346,7 +364,7 @@ class ApptainerSubmissionTest(SubmissionTest):
             ])
         if step == 'attack':
             app_cmd.extend([
-                '-B', f'{self.attack_dataset_path(ds_name, target).parent}:{self.ATTACK_DS_ROOT}:ro',
+                '-B', f'{self.attack_dataset_root(ds_name, target)}:{self.ATTACK_DS_ROOT}:ro',
                 '-B', f'{self.custom_attack_dataset_path(ds_name, target).parent}:{self.ATTACK_MANIFEST_ROOT}:ro',
                 '-B', f'{self.guess_file(ds_name, target).parent}:{self.GUESS_DIR}:rw',
                 ])
