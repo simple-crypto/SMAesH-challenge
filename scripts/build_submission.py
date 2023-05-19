@@ -33,6 +33,7 @@ def parse_args():
             '--large-files',
             type=str,
             nargs='*',
+            default=tuple(),
             help='Patterns (glob) of the data files.'
             )
     parser.add_argument(

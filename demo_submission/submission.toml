@@ -7,9 +7,10 @@ name = "Demo-1"
 # Team name, must be the same as the registered user name on the submission server.
 team = "Organizers"
 # Author list (pseudonyms allowed).
+# Email is optional, but we need at least one corresponding author.
 authors = [
-        { name = "Gaëtan Cassiers", email = "gaetan.cassiers@iaik.tugraz.at" },
-        { name = "Charles Momin", email = "charles.momin@uclouvain.be" },
+        { name = "Gaëtan Cassiers", email = "gaetan.cassiers@iaik.tugraz.at", corresponding = true },
+        { name = "Charles Momin", email = "charles.momin@uclouvain.be", corresponding = true },
 ]
 # License for all the code in this submission (unless noted otherwise in
 # individual files or in a LICENSE, COPYRIGHT or COPYING.

@@ -18,7 +18,9 @@ def description_schema(targets):
                     "properties": {
                         "name": { "type": "string" },
                         "email": { "type": "string" },
+                        "corresponding": { "type": "boolean" },
                     },
+                    "required": ["name"],
                 },
             },
             "name" : {"type" : "string"},
@@ -36,7 +38,7 @@ def description_schema(targets):
                 "minProperties": 1,
             },
         },
-        "required": ["name", "license", "attacks"],
+        "required": ["team", "authors", "name", "license", "attacks"],
     }
 
 
@@ -72,6 +74,10 @@ def validate_submission(f, targets=TARGETS):
         jsonschema.validate(description, schema=description_schema(targets))
     except jsonschema.ValidationError as e:
         raise ValidationError(*e.args)
+    if any(author.get("corresponding") and "email" not in author for author in description["authors"]):
+        raise ValidationError("A corresponding does not have email address.")
+    if not any(author.get("corresponding") for author in description["authors"]):
+        raise ValidationError("There is no corresponding author.")
     return description
     
 if __name__ == '__main__':
