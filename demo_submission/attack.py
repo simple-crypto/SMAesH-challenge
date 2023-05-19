@@ -131,14 +131,8 @@ class Attack:
         #### First step, identifying the POIs by computing the SNR metric 
         # on targeted values. Use only the dataset with id 'vk0' in our example.
 
-        # Find id for the dataset vk0
-        dataset_vk0_id = 0
-        for dsi, ds in enumerate(profile_datasets):
-            if ds.id == "vk0":
-                dataset_vk0_id = dsi
-
         # Dataset instance
-        dataset = profile_datasets[dataset_vk0_id]
+        dataset, = [ds for ds in profile_datasets if ds.id.contains('-vk0')]
         nsamples = dataset.fields["traces"]["shape"][0]
 
         # SNR for byte of the share coming from the Sboxes
@@ -220,7 +214,7 @@ class Attack:
         # Counter use for display purpose.
         cnt_traces = 0
         # Create the iterator for the dataset dsreader. 
-        chunkIt = profile_datasets[dataset_vk0_id].iter_ntraces(NT_PROF_LDA, max_chunk_size=MAX_CHUNK_SIZE)
+        chunkIt = dataset.iter_ntraces(NT_PROF_LDA, max_chunk_size=MAX_CHUNK_SIZE)
         for chunk in tqdm.tqdm(chunkIt,total=len(chunkIt)):
             # Update the counter  
             cnt_traces += chunk["traces"].shape[0]
