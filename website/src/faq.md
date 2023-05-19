@@ -15,3 +15,7 @@ first submission to adjust your claim, depending on the key rank you get at
 
 Whether you start conservatively and improve, or start aggressive then back off is your choice!
 
+## I have another question.
+
+[Contact us](./introduction.md#contact-information)
+
