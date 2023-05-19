@@ -18,7 +18,7 @@ SIMU_FILE = simu_aeshpc_32bit.cpp
 
 REQU_FILE = ../setup/requirements.txt 
 
-all: verime upd-setup
+all: verime upd-setup clean
 
 verime:
 	verime \
@@ -40,5 +40,5 @@ upd-setup:
 clean:
 	rm -rf $(PACKAGE_DIR)
 
-.PHONY: verime clean all
+.PHONY: verime upd-setup clean all
 

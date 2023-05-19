@@ -63,8 +63,12 @@ generates a valid submission `.zip` file based on the submission directory. You 
 the package archive for the demo submission. 
 ```bash
 # (To run in the venv-scripts environment.)
-python3 scripts/build_submission.py --submission-dir ./demo_submission --package-file mysubmission.zip
+python3 scripts/build_submission.py --submission-dir ./demo_submission --package-file mysubmission.zip --large-files "setup/*.whl"
 ```
+If you use ["Outside the framework" profiling](./profilind.md), you will likely
+have to add multiple parameters to `--large-files`, e.g., `--large-files "setup/*.whl" "profiled_model.pkl"`.
+We try to keep submissions small (as it makes it easier to download them
+afterwards) by not including non-required large files.
 
 Then, you can validate basic elements of its content with
 ```bash
