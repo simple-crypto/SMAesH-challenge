@@ -112,5 +112,5 @@ You may want to:
 
 ## Upload
 
-Create your team and upload your submission on the
+Create your team and upload your submission package (e.g., `mysubmission.zip`) on the
 [submission server](https://submit.smaesh-challenge.simple-crypto.org/). 
