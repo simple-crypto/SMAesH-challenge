@@ -69,7 +69,7 @@ easy to improve. We next share a few ideas of alternative strategies that could 
 - **2023-09-1** Submission server closes.
 - **2023-09-10** (at CHES) Award ceremony.
 
-Submissions are graded continuously, and the [leaderboard](./leaderboard.md)
+Submissions are graded continuously, and the [leaderboard](https://submit.smaesh-challenge.simple-crypto.org/submissions/leaderboard)
 keeps getting updated.
 The best attacks are public: you can get inspiration from other participants,
 see the [rules](./rules.md) for more details.
