@@ -73,11 +73,11 @@ def validate_submission(f, targets=TARGETS):
     try:
         jsonschema.validate(description, schema=description_schema(targets))
     except jsonschema.ValidationError as e:
-        raise ValidationError(*e.args)
+        raise ValidationError(f'Bad submission.toml: {e.args[0]}')
     if any(author.get("corresponding") and "email" not in author for author in description["authors"]):
-        raise ValidationError("A corresponding does not have email address.")
+        raise ValidationError("Bad submission.toml: A corresponding does not have email address.")
     if not any(author.get("corresponding") for author in description["authors"]):
-        raise ValidationError("There is no corresponding author.")
+        raise ValidationError("Bad submission.toml: There is no corresponding author.")
     return description
     
 if __name__ == '__main__':

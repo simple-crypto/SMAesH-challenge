@@ -11,6 +11,7 @@ Winners will be announced and [rewarded](./rules.md#prize) at CHES2023.
 
 **Get started [now](./getting_started.md)!**
 
+**[Leaderboard](https://submit.smaesh-challenge.simple-crypto.org/submissions/leaderboard)**
 
 ## Key features
 

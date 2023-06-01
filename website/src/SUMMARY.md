@@ -16,3 +16,4 @@
     - [Submission](./submission.md)
     - [Beyond Python](./not_python.md)
 - [Challenge rules](./rules.md)
+- [FAQ](./faq.md)
