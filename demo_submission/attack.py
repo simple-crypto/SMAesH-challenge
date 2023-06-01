@@ -132,7 +132,7 @@ class Attack:
         # on targeted values. Use only the dataset with id 'vk0' in our example.
 
         # Dataset instance
-        dataset, = [ds for ds in profile_datasets if ds.id.contains('-vk0')]
+        dataset, = [ds for ds in profile_datasets if ('vk0' in ds.id)]
         nsamples = dataset.fields["traces"]["shape"][0]
 
         # SNR for byte of the share coming from the Sboxes
