@@ -49,9 +49,9 @@ When such a profile file is embedded into a submission package, the method to
 follow for regenerating this file must be documented in the submission package (see
 [Submission](./submission.md)).
 
-Note that if you submission package exceeds 2 GB, it will not be accepted by
+Note that if you submission package exceeds 4 GB, it will not be accepted by
 the evaluation server.
 If this limit cannot be adhered to by your attack, we'd still like to be able
 to accept it in the challenge. Please contact the organizers, we may (at our
-discretion) arrange a way to bypass the 2 GB limit.
+discretion) arrange a way to bypass the 4 GB limit.
 
