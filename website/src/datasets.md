@@ -39,7 +39,7 @@ following table summarizes which fields are provided with each datasets for all 
 | ---- | :----: | :----: | :----: |
 | traces | &#x2611; | &#x2611; | &#x2611; |
 | umsk_plaintext | &#x2611; | &#x2611; | &#x2611; |
-| umsk_key | &#x2611; | &#x2611; | &#x2611; |
+| umsk_key | &#x2611; | &#x2611; | |
 | msk_plaintext | &#x2611; | | |
 | msk_key | &#x2611; | | |
 | seed | &#x2611; | | |
@@ -98,10 +98,6 @@ smaesh-dataset/
 | | +-- msk_plaintext/
 | | +-- msk_key/
 | | +-- seed/
-```
-
-```
-smaesh-dataset/
 +-- S6_d2/
 | +-- vk0/
 | | + manifest.json

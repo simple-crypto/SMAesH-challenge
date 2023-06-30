@@ -26,7 +26,7 @@ clock cycle) using a vertical resolution of 12 bits. As a pre-processing,
 sequential time samples are aggregated (i.e., summed) in order to reduce the
 dataset storing size. The practical reduction ratio equals 4, resulting in a
 practical sampling frequency if 312.5MHz with a vertical resolution of 14 bits. 
-Is results that the resulting traces have the same temporal configuration as the one 
+It results that the resulting traces have similar temporal configuration as the one 
 collected for the [Artix-7](./artix7.md).
 
 
