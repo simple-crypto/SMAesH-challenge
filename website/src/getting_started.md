@@ -40,7 +40,7 @@ See [this page](./datasets_download.md) for downloading the datasets.
 
 In the following, we use the variable `SMAESH_DATASET` as the path to the directory where the
 downloaded dataset is stored (i.e., the path to the directory `smaesh-dataset`,
-which is the directory that contains the `A7_d2` directory). 
+which is the directory that contains the `A7_d2` directory in the case of the Artix-7 target). 
 
 As a final step, format the dataset.
 This operation must be done a single time on each fixed key dataset (it may last a few seconds).
