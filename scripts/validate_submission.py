@@ -36,6 +36,7 @@ def description_schema(targets):
                     "required": ["n_traces"],
                 },
                 "minProperties": 1,
+                "maxProperties": 1,
             },
         },
         "required": ["team", "authors", "name", "license", "attacks"],
