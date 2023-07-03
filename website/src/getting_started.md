@@ -40,7 +40,7 @@ See [this page](./datasets_download.md) for downloading the datasets.
 
 In the following, we use the variable `SMAESH_DATASET` as the path to the directory where the
 downloaded dataset is stored (i.e., the path to the directory `smaesh-dataset`,
-which is the directory that contains the `A7_d2` directory in the case of the Artix-7 target). 
+which is the directory that contains the directories `A7_d2` and `S6_d2`). 
 
 As a final step, format the dataset.
 This operation must be done a single time on each fixed key dataset (it may last a few seconds).
@@ -52,7 +52,7 @@ python3 -m venv venv-scripts
 source venv-scripts/bin/activate # Activate it (adapt if not using bash shell)
 pip install pip --upgrade 
 pip install -r scripts/requirements.txt
-# Run the split_dataset command
+# Run the split_dataset command (here for the Artix-7 only)
 python3 scripts/split_dataset.py --dataset $SMAESH_DATASET/A7_d2/fk0/manifest.json 
 # Leave de venv-scripts virtual environment
 deactivate
