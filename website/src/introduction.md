@@ -66,7 +66,7 @@ easy to improve. We next share a few ideas of alternative strategies that could 
 ## Timeline
 
 - **2023-05-08** Challenge launch with Artix-7 target, submission server opens.
-- **June 2023** Launch of the Spartan-6 target.
+- **2023-07-03** Launch of the Spartan-6 target.
 - **2023-09-1** Submission server closes.
 - **2023-09-10** (at CHES) Award ceremony.
 
