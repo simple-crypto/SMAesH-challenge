@@ -82,4 +82,4 @@ Teams cannot win more than one award.
 - The organisers reserve the right to change in any way the contest rules or to
   reject any submission, including with retroactive effect.
 - Submissions may be anonymous, but only winners accepting de-anonymization
-  will get a prize.
+  will get a prize. For this reason, only submissions with a valid correspondence email address will be eligible for prizes.  
