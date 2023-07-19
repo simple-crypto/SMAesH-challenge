@@ -20,7 +20,7 @@ It is compressed with the [zstd](http://facebook.github.io/zstd/) tool
 archived in the `tar` format.
 To decompress it, run
 ```bash
-zstdcat -T0 smaesh-dataset-v1.tar.zstd | tar xv
+zstdcat -T0 smaesh-dataset-v1-A7_d2.tar.zstd | tar xv
 ```
 
 ### Compressed archive, multi-file
@@ -52,7 +52,25 @@ Individual files are available [here](https://nextcloud.cism.ucl.ac.be/s/82XMewX
 ## SMAesH-S6_d2
 
 The `SMAesH-S6_d2-vk0` and `SMAesH-S6_d2-fk0` datasets are currently available
-on a single server.
+as a single archive and as a split archive.
+
+### Compressed archive, single-file
+
+A compressed archive (~190GB, ~300GB decompressed) available
+[here](https://seafile.iaik.tugraz.at/f/30416640d8fc42a999d6/?dl=1). It can be
+easily downloaded with `wget` (download can be resumed if interrupted by
+re-launching the same command):
+```bash
+wget -c --trust-server-names https://seafile.iaik.tugraz.at/f/30416640d8fc42a999d6/?dl=1
+```
+(File size: `190667931874 bytes`, SHA256: `c542ed543b46a6228ffe8c39a959dbd6425330b4d00bb5d40ae849cf87bb18eb`.)
+It is compressed with the [zstd](http://facebook.github.io/zstd/) tool
+(typically available on linux distributions as the `zstd` package), and
+archived in the `tar` format.
+To decompress it, run
+```bash
+zstdcat -T0 smaesh-dataset-v1-S6_d2.tar.zstd | tar xv
+```
 
 ### Compressed archive, multi-file
 
