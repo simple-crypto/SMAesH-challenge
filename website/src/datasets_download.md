@@ -57,7 +57,7 @@ as a single archive and as a split archive.
 ### Compressed archive, single-file
 
 A compressed archive (~190GB, ~300GB decompressed) available
-[here](https://seafile.iaik.tugraz.at/f/30416640d8fc42a999d6/?dl=1). It can be
+[here](https://seafile.iaik.tugraz.at/f/7e78e6b4b7fc4e67994a/?dl=1). It can be
 easily downloaded with `wget` (download can be resumed if interrupted by
 re-launching the same command):
 ```bash
