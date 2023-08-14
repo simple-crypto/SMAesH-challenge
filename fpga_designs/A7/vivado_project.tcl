@@ -165,14 +165,14 @@ set obj [get_filesets constrs_1]
 # Add/Import constrs file and set constrs file properties
 set file "[file normalize "$origin_dir/cw305_main.xdc"]"
 set file_added [add_files -norecurse -fileset $obj [list $file]]
-set file "challenge-synthesis/cw305_main.xdc"
+set file "cw305_main.xdc"
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
 set_property -name "file_type" -value "XDC" -objects $file_obj
 
 # Add/Import constrs file and set constrs file properties
 set file "[file normalize "$origin_dir/aes_ctf.xdc"]"
 set file_added [add_files -norecurse -fileset $obj [list $file]]
-set file "challenge-synthesis/aes_ctf.xdc"
+set file "aes_ctf.xdc"
 set file_obj [get_files -of_objects [get_filesets constrs_1] [list "*$file"]]
 set_property -name "file_type" -value "XDC" -objects $file_obj
 
