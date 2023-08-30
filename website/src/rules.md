@@ -83,3 +83,8 @@ Teams cannot win more than one award.
   reject any submission, including with retroactive effect.
 - Submissions may be anonymous, but only winners accepting de-anonymization
   will get a prize. For this reason, only submissions with a valid correspondence email address will be eligible for prizes.  
+- Submissions containing non-generalizable attacks are not accepted and will
+  not be accepted. An attack is considered "generalizable" if, in addition to
+  being successful, there is a high probability that it will also be
+  successful against other evaluation datasets acquired under similar
+  conditions.
