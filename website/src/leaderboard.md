@@ -30,7 +30,7 @@ These attacks can be downloaded [here](https://github.com/simple-crypto/SMAesH-c
 
 After the CHES challenge, the test datasets have been released (as well as the profiling randomness for the `S6_d2` dataset).
 
-We invite everybody who works with the dataset to report their attacks to [the challenge organizers](info@simple-crypto.dev) (paper and/or code link). We aim to maintain here a list of all public attacks on the dataset.
+We invite everybody who works with the dataset to report their attacks to [the challenge organizers](mailto:info@simple-crypto.dev) (paper and/or code link). We aim to maintain here a list of all public attacks on the dataset.
 Ideally, attack code should work within the [evaluation framework](./framework.md), in order to ease reproduction.
 
 ### Following challenge rules
