@@ -1,7 +1,6 @@
 # Submission
 
-In this section, we explain how to prepare, package and test your submission,
-before finally uploading it to the evaluation server.
+In this section, we explain how to prepare, package and test your submission.
 
 At this point, we assume that your attack works with `quick_eval.py` (see [Framework](./framework.md)).
 
@@ -97,8 +96,8 @@ use a slower machine than the evaluation server).
 python3 scripts/test_submission.py --package mysubmission.zip --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --apptainer
 ```
 
-If this works, congrats! The evaluation server uses the same command (albeit
-with an additional `--attack-dataset-dir` argument), so you are ready to submit.
+If this works, congrats! Your submission is fully functional and your results
+will be easily reproduced! It only remains to test it on the test dataset.
 
 If it does not work, for debugging, note that the `apptainer` mode prints the
 commands it runs, so you can see what happens.
@@ -110,7 +109,17 @@ You may want to:
 - Run commands inside the container using [`apptainer shell`](https://apptainer.org/docs/user/main/index.html).
 
 
-## Upload
+## Test and submit
 
-Create your team and upload your submission package (e.g., `mysubmission.zip`) on the
-[submission server](https://submit.smaesh-challenge.simple-crypto.org/). 
+Run
+```bash 
+python3 scripts/test_submission.py --package mysubmission.zip --workdir workdir-eval-inplace --dataset-dir $SMAESH_DATASET --apptainer --attack-dataset-name fk1
+```
+to run the evaluation against the test dataset.
+
+
+Then, send the evaluation result, along with a test dataset, to the [organizers](mailto:info@simple-crypto.org).
+
+*Remark*: The [resource limit rule](./rules.md) is lifted for the post-CHES part of the challenge.
+However, please let us know if your submission requires significantly more computational resources that this limit.
+

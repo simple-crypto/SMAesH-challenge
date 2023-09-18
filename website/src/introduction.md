@@ -1,4 +1,4 @@
-# Welcome to the CHES2023 SMAesH Challenge
+# Welcome to the SMAesH Challenge
 
 The SMAesH challenge is a side-channel analysis contest on
 [SMAesH](https://simple-crypto.org/activities/smaesh),
@@ -7,11 +7,18 @@ implementation of the AES.
 Using the public profiling dataset and the open-source hardware design, the
 goal is to mount a key-recovery attack using as few traces as possible.
 
-Winners will be announced and [rewarded](./rules.md#prize) at CHES2023.
+The SMAesH challenge was the [CHES2023 challenge](https://ches.iacr.org/2023/challenge.php).
 
 **Get started [now](./getting_started.md)!**
 
-**[Leaderboard](https://submit.smaesh-challenge.simple-crypto.org/submissions/leaderboard)**
+**The winners were announced at the CHES2023 rump session
+[slides](https://raw.githubusercontent.com/simple-crypto/SMAesH-challenge-submissions/main/CHES2023_slides.pdf),
+but the challenge continues: see the [leaderboard](./leaderboard.md) and new
+[submission instructions](./submission.md)!**
+
+N.B.: We maintain a list of all attacks, including those that are not proper
+submissions (e.g., do not follow the correct format or do not respect the
+rules): please [send them to us](mailto:info@simple-crypto.org).
 
 ## Key features
 
@@ -63,17 +70,15 @@ easy to improve. We next share a few ideas of alternative strategies that could 
   the Artix-7 than for the Spartan-6.
 - Exploit the leakage of the key scheduling algorithm. 
 
+You can also have a look at the [existing open-source attacks](./leaderboard.md)!
+
 ## Timeline
 
 - **2023-05-08** Challenge launch with Artix-7 target, submission server opens.
 - **2023-07-03** Launch of the Spartan-6 target.
 - **2023-09-1** Submission server closes.
 - **2023-09-10** (at CHES) Award ceremony.
-
-Submissions are graded continuously, and the [leaderboard](https://submit.smaesh-challenge.simple-crypto.org/submissions/leaderboard)
-keeps getting updated.
-The best attacks are public: you can get inspiration from other participants,
-see the [rules](./rules.md) for more details.
+- **Soon!** Full dataset public release. The challenge continues with self-evaluation!
 
 ## Contact information
 

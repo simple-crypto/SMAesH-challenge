@@ -57,6 +57,11 @@ and that that previous attack has not been evaluated yet, then it will not be ev
 When the time comes to evaluate an attack, if its claim is more than 90% of the
 best successful attack evaluated so far, then it is not evaluated (i.e., a 10% improvement is required).
 
+Non-generalizable attacks are not accepted and will not be accepted. An attack
+is generalizable if, in addition to being successful, it has a high chance of
+being successsful against other test datasets acquired in identical conditions.
+In particular, an attack that contains hard-coded information on the test dataset key is not generlizable.
+
 ### Points
 
 Points are countinuously awarded for the best successful attack, at the rate of 1 point per hour.

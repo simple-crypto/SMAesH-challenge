@@ -9,11 +9,11 @@ the one needed to attack `fk1`.
 That being said, for a given attack algorithm, some keys might be easier to
 break than some others, and maybe `fk1` is easier or harder than `fk0` for your
 attack.
-You can submit multiple times your attack within the embargo period of the
-first submission to adjust your claim, depending on the key rank you get at
-<https://submit.smaesh-challenge.simple-crypto.org/submissions/my_attacks>.
+Please do not overfit your attack: develop it while evaluating only on `fk0`,
+and when it works there, test it on `fk1`.
+You may make multiple attempts at `fk1` while chaning the number of attack
+traces, but your final number of traces should work for both `fk0` and `fk1`.
 
-Whether you start conservatively and improve, or start aggressive then back off is your choice!
 
 ## I have another question.
 
