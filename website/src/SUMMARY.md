@@ -8,7 +8,6 @@
     - [Artix-7](./artix7.md)
     - [Spartan-6](./spartan6.md)
 - [Datasets](./datasets.md)
-    - [Datasets download](./datasets_download.md)
 - [Framework](./framework.md)
     - [Profiling](./profiling.md)
         - [Target simulation](./target_simulation.md)
