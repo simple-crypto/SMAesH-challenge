@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+title: SMAesH-challenge
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Gaëtan
+    family-names: Cassiers
+    orcid: 'https://orcid.org/0000-0001-5426-9345'
+  - given-names: Charles
+    family-names: Momin
+repository-code: 'https://github.com/simple-crypto/SMAesH-challenge'
+url: 'https://smaesh-challenge.simple-crypto.org'
+license: Apache-2.0
