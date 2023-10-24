@@ -118,7 +118,7 @@ python3 scripts/test_submission.py --package mysubmission.zip --workdir workdir-
 to run the evaluation against the test dataset.
 
 
-Then, send the evaluation result, along with a test dataset, to the [organizers](mailto:info@simple-crypto.org).
+Then, send the evaluation result, along with the submission zip file, to the [organizers](mailto:info@simple-crypto.org).
 
 *Remark*: The [resource limit rule](./rules.md) is lifted for the post-CHES part of the challenge.
 However, please let us know if your submission requires significantly more computational resources that this limit.
