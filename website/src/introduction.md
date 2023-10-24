@@ -78,7 +78,7 @@ You can also have a look at the [existing open-source attacks](./leaderboard.md)
 - **2023-07-03** Launch of the Spartan-6 target.
 - **2023-09-1** Submission server closes.
 - **2023-09-10** (at CHES) Award ceremony.
-- **Soon!** Full dataset public release. The challenge continues with self-evaluation!
+- **2023-10-19!** Full dataset public release. The challenge [continues with self-evaluation](./submission.md)! See the [leaderboard](./leaderboard.md).
 
 ## Contact information
 
