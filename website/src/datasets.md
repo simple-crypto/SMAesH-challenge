@@ -53,9 +53,9 @@ Finally, the next table summarizes the global size of each dataset (in term of a
 
 | Dataset name | Target | Role | Number of traces | Length of traces |
 | ---- | :----: | :----: | :----: | :----: |
-| `SMAesH-A7_d2-vk0` | Artix-7 (\\( d = 2 \\)) | profiling | \\( 2 ^ {24} \\) | \\( 4250 \\) |
-| `SMAesH-A7_d2-fk0` | Artix-7 (\\( d = 2 \\)) | validation | \\( 2 ^ {24} \\) | \\( 4250 \\) |
-| `SMAesH-A7_d2-fk1` | Artix-7 (\\( d = 2 \\)) | test | \\( 2 ^ {24} \\) | \\( 4250 \\) |
+| `SMAesH-A7_d2-vk0` | Artix-7 (\\( d = 2 \\)) | profiling | \\( 2 ^ {24} \\) | \\( 4450 \\) |
+| `SMAesH-A7_d2-fk0` | Artix-7 (\\( d = 2 \\)) | validation | \\( 2 ^ {24} \\) | \\( 4450 \\) |
+| `SMAesH-A7_d2-fk1` | Artix-7 (\\( d = 2 \\)) | test | \\( 2 ^ {24} \\) | \\( 4450 \\) |
 | `SMAesH-S6_d2-vk0` | Spartan-6 (\\( d = 2 \\)) | profiling | \\( 2 ^ {24} \\) | \\( 4400 \\) |
 | `SMAesH-S6_d2-fk0` | Spartan-6 (\\( d = 2 \\)) | validation | \\( 2 ^ {24} \\) | \\( 4400 \\) |
 | `SMAesH-S6_d2-fk1` | Spartan-6 (\\( d = 2 \\)) | test | \\( 2 ^ {24} \\) | \\( 4400 \\) |
